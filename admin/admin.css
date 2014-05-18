@@ -1,0 +1,143 @@
+#abody
+	{
+		background-color: #ded0c3;
+		width: 500px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+
+#content
+{
+	font-family: 'Times New Roman', sans-serif;
+	font-size: 1.2em;
+}
+
+.myh
+{
+	font-size: 28px;
+	text-align: center;
+	font-family: 'URW Chancery L';
+}
+
+#center
+{
+	border-right-style: ridge;
+	border-left-style: ridge;
+	padding-left: 30px;
+	padding-right: 30px;
+	border-width: 4px;
+	position: relative;
+	width: 420px;
+	float: center;
+	height: 400px;
+}
+
+#pleft
+{
+	width: 250px;
+	position: relative;
+	float: left;
+	left: -300px;
+	top: -430px;
+}
+
+#pright
+{
+	width: 250px;
+	position: relative;
+	float: right;
+	left: 300px;
+	top: -430px;
+}
+
+#bottom
+{
+	background : url('./images/bground.jpg') repeat-x;
+	height : 100px;
+	position: fixed;
+	bottom: -6px;
+	width: 100%;
+	right: 0;
+}
+
+#first
+{
+	font-family: 'Comic Sans MS';
+	font-size: 2em;
+	text-align: center;
+}
+
+#myform
+{
+	border-spacing: 5px;
+	margin-bottom: 20px;
+}
+
+#exit
+{
+	position: fixed;
+	bottom: 170px;
+	left: 10px;
+}
+
+a:link
+	{
+		color: black;
+	}
+a:hover
+	{
+		color: #bf8e62;
+	}
+a:visited
+	{
+		color: black;
+	}
+#reg
+	{
+		position: fixed;
+		top: 0px;
+		right: 10px;
+	}
+#user
+	{
+		position: absolute;
+		top: 0px;
+		left: 20px;
+	}
+
+.instring /* повтор */
+	{
+		width: 160px;
+		height: 20px;
+		background-color: #fcf6f6;
+		border-style: solid;
+		padding-left: 5px;
+		border-color: grey;
+	}
+
+.button
+	{
+		margin-top: 10px;
+		background-color: #bf8e62;
+		border-style: none;
+		height: 30px;
+		width: 80px;
+		text-align: center;
+	}
+
+.selectof
+	{
+		height: 25px;
+		width: 169px;
+	}
+
+#find
+	{
+		height: 100px;
+		width: 420px;
+		margin-top: 25px;
+		border: 1px solid gray;
+		overflow-y: scroll;
+		font-size: 16px;
+	}

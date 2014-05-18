@@ -1,0 +1,169 @@
+body
+	{
+		background-color: #ded0c3;
+		width: 500px;
+		margin-left: auto;
+		margin-right: auto;
+		overflow:  hidden;
+	}
+
+
+#content
+{
+	font-family: 'Times New Roman', sans-serif;
+	font-size: 1.2em;
+	margin-top: 50px;
+}
+
+.myh
+{
+	font-size: 28px;
+	text-align: center;
+	font-family: 'URW Chancery L';
+}
+
+#center
+{
+	border-right-style: ridge;
+	border-left-style: ridge;
+	padding-left: 30px;
+	padding-right: 30px;
+	border-width: 4px;
+	position: relative;
+	width: 420px;
+	float: center;
+	height: 400px;
+}
+
+#pleft
+{
+	width: 250px;
+	position: relative;
+	float: left;
+	left: -300px;
+	top: -430px;
+}
+
+#pright
+{
+	width: 250px;
+	position: relative;
+	float: right;
+	left: 260px;
+	top: -430px;
+}
+
+#bottom
+{
+	background : url('./images/bground.jpg') repeat-x;
+	height : 100px;
+	position: fixed;
+	bottom: -6px;
+	width: 100%;
+	right: 0;
+}
+
+#first
+{
+	position: relative;
+	font-family: 'Comic Sans MS';
+	font-size: 2em;
+	text-align: left;
+	left: -250px;
+	margin-top: 80px;
+}
+
+#myform
+{
+	border-spacing: 5px;
+	margin-bottom: 20px;
+}
+
+#exit
+{
+	position: fixed;
+	bottom: 170px;
+	left: 10px;
+}
+
+a:link
+	{
+		color: black;
+	}
+a:hover
+	{
+		color: #bf8e62;
+	}
+a:visited
+	{
+		color: black;
+	}
+#end
+	{
+		z-index: 99;
+		position: fixed;
+		right: 30px;
+		bottom: 155px;
+	}
+#user
+	{
+		position: absolute;
+		top: 0px;
+		left: 20px;
+	}
+#subject
+	{
+		margin: 10px;
+		margin-bottom: 20px;
+		margin-left: 20px;
+		border-style: none;
+		padding: 10px;
+		background-color: #d9bb9f;
+	}
+
+.instring /* повтор */
+	{
+		width: 160px;
+		height: 20px;
+		background-color: #fcf6f6;
+		border-style: solid;
+		padding-left: 5px;
+		border-color: grey;
+	}
+
+.button
+	{
+		margin-top: 10px;
+		background-color: #bf8e62;
+		border-style: none;
+		height: 30px;
+	}
+
+#buttons
+	{
+		z-index: 99;
+		position: fixed;
+		bottom: 200px;
+		right: 30px;
+
+	}
+
+.selectof
+	{
+		height: 25px;
+		width: 169px;
+	}
+
+#compl
+	{
+		width: 200px;
+	}
+
+#compr
+	{
+		position: absolute;
+		width: 200px;
+		left: 250px;
+		top: 80px;
+		text-align: right;
+	}
