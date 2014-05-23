@@ -32,6 +32,12 @@ body
 		height: 300px;
 	}
 
+#results
+	{
+		overflow-y: auto;
+		height: 270px;
+	}
+
 #center
 {
 	font-family: 'Times New Roman', sans-serif;

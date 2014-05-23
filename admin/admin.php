@@ -78,6 +78,11 @@ require_once ('./processing.php');
 		</div>
 		<div id="pright">
 			<p class="myh">Остання активність</p>
+			<div id="lresults">
+			<?php
+				showlastresults();
+			?>
+			</div>
 		</div>
 	</div>
 	<?php

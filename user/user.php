@@ -31,9 +31,11 @@ userrights('user');
 		</div>
 		<div id="right">
 			<p class="second">Останні результати</p>
+			<div id="results">
 			<?php 
 				$myuser -> showmarks();
 			?>
+			</div>
 		</div>
 	</div>
 </div>

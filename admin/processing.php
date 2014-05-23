@@ -66,7 +66,26 @@ function searchtest()
 						}
 	}
 
-
+function showlastresults()
+{
+	global $mydb;
+	$query = "SELECT subjects.sname, tests.name, tsession.mark, tsession.sdata, users.name FROM tsession 
+	INNER JOIN tests INNER JOIN subjects INNER JOIN users ON tsession.idtest = tests.id WHERE
+	subjects.id = tests.idsub AND tsession.iduser = users.id GROUP BY tsession.sdata DESC LIMIT 5";
+	$result = $mydb -> selectdata($query);
+	echo '<table style = "font-size: 14px; text-align: center; left: -10px;">';
+	echo '
+	<col width="100">
+	<col width="150">
+	<col width="50">
+	<col width="150">
+	<col width="60">
+	';
+	echo "<tr><th>Предмет</th> <th>Назва тесту</th> <th>Балл</th> <th>Дата</th> <th>Нік</th></tr>";
+	while($str = mysql_fetch_array($result, MYSQLI_NUM))
+	echo "<tr><td>$str[0]</td> <td>$str[1]</td> <td>$str[2]</td> <td>$str[3]</td> <td>$str[4]</td></tr>";
+	echo "</table>";
+}
 
 if (!empty($_GET['delsub']))
 	{
