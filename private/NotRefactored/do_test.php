@@ -1,7 +1,7 @@
 <?php
 	require_once ('../share/header.php');
 	require_once('../share/DataBaseClass.php');
-	require_once('../share/classuser.php');
+	require_once('../share/UserClass.php');
 	require_once('../share/classtest.php');
 session_start();
 if (!empty($_GET['u']))
@@ -142,7 +142,7 @@ if (empty($condition[1]))
 		$_SESSION['showmark'] = 1;
 		$_SESSION['mark'] = $mark;
 		$_SESSION['tid'] = $id;
-		header("Location: http://$host/user/user.php");
+		header("Location: http://$host/user/index.php");
 	}
 ?>
 

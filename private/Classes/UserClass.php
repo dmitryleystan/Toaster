@@ -74,10 +74,11 @@
 							usandgr.idgroup = groups.id WHERE users.id = '$nm' AND usandgr.iduser = users.id";
 						}
 					$result = $this -> mydb -> selectdata($query);
+                    $glist = "";
 					while($str = mysql_fetch_array($result, MYSQLI_NUM))
-						echo "$str[0] ";
+						$glist .= "$str[0] ";
 					unset($nm);
-					return 0;
+					return $glist;
 				}
 
 			public function getname()
@@ -160,7 +161,7 @@
 					return 0;
 				}
 
-			public function showtests()
+			public function gettests()
 				{
 					$uid = $this -> getuid();
 					$query = "SELECT tests.id, tests.name FROM tests 
@@ -170,29 +171,23 @@
 
 					$result = $this -> mydb -> selectdata($query);
 
-					while($str = mysql_fetch_array($result, MYSQLI_NUM))
-						echo '<a href="./starttest.php?id=' . $str[0] . '&u=' . $uid . '">' . $str[1] . '</a><br />';
-					return 0;
+                    $res = array();
+					For ($i=0; $str = mysql_fetch_array($result, MYSQLI_NUM); $i++)
+						$res[$i] = $str;
+					return $res;
 				}
 
-			public function showmarks()
+			public function getmarks()
 				{
 					$u = $this -> uid;
 					$query = "SELECT subjects.sname, tests.name, tsession.mark, tsession.sdata FROM tsession 
 					INNER JOIN tests INNER JOIN subjects ON tsession.iduser = $u WHERE
 					tsession.idtest = tests.id AND subjects.id = tests.idsub GROUP BY tsession.sdata DESC";
 					$result = $this -> mydb -> selectdata($query);
-					echo '<table style = "font-size: 14px; text-align: center; left: -10px;">';
-					echo '
-					<col width="100">
-					<col width="150">
-					<col width="50">
-					<col width="100">
-					';
-					echo "<tr><td>Предмет</td> <td>Назва тесту</td> <td>Бал</td> <td>Дата</td></tr>";
-					while($str = mysql_fetch_array($result, MYSQLI_NUM))
-						echo "<tr><td>$str[0]</td> <td>$str[1]</td> <td>$str[2]</td> <td>$str[3]</td></tr>";
-					echo "</table>";
+                    $res = array();
+                    for($i=0; $str = mysql_fetch_array($result, MYSQLI_NUM); $i++)
+                        $res[$i] = $str;
+                    return $res;
 				}
 
 			public function changepassw($newpassw)

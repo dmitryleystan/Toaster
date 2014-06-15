@@ -35,7 +35,7 @@ userrights('user');
 		</div>
 	</div>
 </form>
-<div id="mend"><a href="user.php">На головну</a></p>
+<div id="mend"><a href="index.php">На головну</a></p>
 <div id="exit">
 	<a href="../share/logout.php"><img src="../share/images/exit.gif" style="width: 50px;" /></a>
 </div>

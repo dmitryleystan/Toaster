@@ -4,7 +4,7 @@ require_once ('../../share/RightsValidation.php');
 userrights('admin');
 	require_once('../../share/DataBaseClass.php');
 	require_once('../../share/classtest.php');
-	require_once('../../share/classuser.php');
+	require_once('../../share/UserClass.php');
 	require_once('../../share/classgroup.php');
 	require_once('../../share/classbook.php');
 require_once('./processing.php');

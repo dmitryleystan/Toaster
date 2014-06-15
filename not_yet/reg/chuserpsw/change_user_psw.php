@@ -14,7 +14,7 @@ require_once ('../../share/RightsValidation.php');
 userrights('admin');
 // якщо юзер адмін то можна йти далі
 require_once ('../../share/DataBaseClass.php');
-require_once ('../../share/classuser.php');
+require_once ('../../share/UserClass.php');
 if (!empty($_GET['uid']))
 	{
 		$myuser = new user();
