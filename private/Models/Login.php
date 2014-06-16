@@ -1,5 +1,5 @@
 <?php
-require_once("{$base_dir}private{$ds}Classes{$ds}DataBaseClass.php"); // include DataBase Class
+require_once("{$base_dir}Classes{$ds}DataBaseClass.php"); // include DataBase Class
 
 class CLogin
 {
@@ -9,7 +9,7 @@ class CLogin
     public
 
         function __construct(){
-        $this->mydb = new DataBase('ross','sunshine');
+        $this->mydb = new CDataBase('ross','sunshine');
         }
 
         function login($user, $password){
@@ -21,6 +21,7 @@ class CLogin
                 {
                     mysql_free_result($result);
                     mysql_close($this->mydb);
+                    $_SESSION['uid'] = $str[0];
                     $_SESSION['nick'] = $str[1];
                     $_SESSION['rights'] = $str[3];
                     mysql_free_result($result);

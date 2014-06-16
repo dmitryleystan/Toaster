@@ -1,16 +1,18 @@
 <?php
 session_start();
-include_once("{$base_dir}private{$ds}Models{$ds}Login.php");    // model
-//include_once("{$base_dir}private{$ds}Modules{$ds}RightsValidation.php");
-include_once("{$base_dir}private{$ds}Modules{$ds}ErrorMessage.php");
+$ds = DIRECTORY_SEPARATOR;
+$base_dir = realpath(dirname(__FILE__)  . $ds . '..') . $ds;
+require_once("{$base_dir}Modules{$ds}HostName.php");
+include_once("{$base_dir}Models{$ds}Login.php");    // model
+include_once("{$base_dir}Modules{$ds}RightsValidation.php");
+include_once("{$base_dir}Modules{$ds}ErrorMessage.php");
 
 $error_code = 0;
 if (!empty($_SESSION['rights']))    // if I already entered in system
     if ($_SESSION['rights'] == 'admins')
-        header("Location: http://$host/admin/admin.php");
+        header("Location: http://$host/views/admin/admin.php");
     else
         header("Location: http://$host/views/user/index.php");
-
 
 if (isset($_POST['enter'])) // if I already want to enter in system
 {
@@ -26,10 +28,10 @@ if (isset($_POST['enter'])) // if I already want to enter in system
         $login_code = $model->login($user, $pass);
         switch ($login_code){
             case 2:
-                header("Location: http://$host/admin/admin.php?un=$user");
+                header("Location: http://$host/views/admin/admin.php?un=$user");
                 break;
             case 1:
-                header("Location: http://$host/user/index.php?un=$user");
+                header("Location: http://$host/views/user/index.php?un=$user");
                 break;
             case 0:
                 $error_code = 2;

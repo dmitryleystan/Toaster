@@ -1,7 +1,4 @@
 <?php
-$host = "toaster.my";
-$ds = DIRECTORY_SEPARATOR;
-$base_dir = realpath(dirname(__FILE__)  . $ds . '..') . $ds;
 require_once("../private/Controllers/LoginController.php");
 require_once("./views/header.php");
 ?>

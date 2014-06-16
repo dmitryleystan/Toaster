@@ -1,6 +1,8 @@
 <?php
+session_start();
 $ds = DIRECTORY_SEPARATOR;
 $base_dir = realpath(dirname(__FILE__)  . $ds . '..') . $ds;
+require_once("{$base_dir}Modules{$ds}HostName.php");
 require_once("{$base_dir}Classes{$ds}DataBaseClass.php");
 require_once("{$base_dir}Classes{$ds}UserClass.php");
 require_once("{$base_dir}Modules{$ds}ShowRCount.php");
@@ -8,7 +10,7 @@ require_once ("{$base_dir}Modules{$ds}RightsValidation.php");
 userrights('user'); // validate user
                                                 ///         USER IDENTIFICATION
 $uname = $_SESSION['nick'];                     /// uname => username
-$myuser = new user();                           ///
+$myuser = new CUser();                           ///
 $myuser -> uname = $uname;                      ///
 $uid = $myuser -> getuid();                     /// get user id
 $lastname =   $myuser -> getinf('lname');       ///
@@ -16,7 +18,7 @@ $firstname =  $myuser -> getinf('fname');       ///
 $fathername = $myuser -> getinf('fathname');    ///
 
 $show_rcount = false;
-if ($_SESSION['showmark'] == true) //   if some test is done
+if ($_SESSION['showmark'] == 1) //   if some test is done
 {
 	$coefficient = $_SESSION['mark'];
 	$m = 2;
@@ -25,7 +27,7 @@ if ($_SESSION['showmark'] == true) //   if some test is done
 	if ($coefficient >= 0.86) $m = 5;
 	
 	$tid = $_SESSION['tid'];    // "tid" => "test id"
-	$myuser -> setmark($m, $tid);
+//	$myuser -> setmark($m, $tid);
 
     $rcount = $_SESSION['shmark']; // count of right answers
 
@@ -50,5 +52,5 @@ function showtests()
 {
     global $tests;
     foreach($tests as $str)
-        echo '<a href="./starttest.php?id=' . $str[0] . '">' . $str[1] . '</a><br />'; /// +  '&u=' . $uid .
+        echo '<a href="./testPass.php?tid=' . $str[0] . '">' . $str[1] . '</a><br />';
 }

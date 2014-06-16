@@ -1,29 +1,30 @@
 <?php
-	require_once ('../share/header.php');
-	require_once('../share/DataBaseClass.php');
-	require_once('../share/UserClass.php');
-	require_once('../share/classtest.php');
 session_start();
-if (!empty($_GET['u']))
-	$uid = $_GET['u'];
+$condition = null;
+$ds = DIRECTORY_SEPARATOR;
+$base_dir = realpath(dirname(__FILE__)  . $ds . '..') . $ds;
+require_once("{$base_dir}Modules/HostName.php");
+require_once("{$base_dir}Classes/UserClass.php");
+require_once("{$base_dir}Classes/TestClass.php");
+require_once("{$base_dir}Modules/RightsValidation.php");
+userrights('user');
 
-$host = $_SERVER['HTTP_HOST'];
-$q = $_SESSION['nick'];
-$myuser = new user();
-$myuser -> uname = $q;
-$uid = $myuser -> getname();
-$mydb = new database('ross','sunshine');
-$mytest = new test();
-$mytest -> tid = $_GET['id'];
-$id = $_GET['id'];
+$myuser = new CUser();                  // Who I am?
+$myuser->uname = $_SESSION['nick'];
+$myuser->uid = $_SESSION['uid'];
+
+$mytest = new CTest();                  // Which of tests I want to pass
+$mytest->tid = $_GET['tid'];  // tid => test id
+
+
 $qid = $_GET['qid'];
 $number = $_GET['n'];
 if (empty($number))
 	$number = 0;
 
-if (!empty($id))
+if (!empty($mytest->tid))
 	if (empty($qid))
-		$condition = $mytest -> getquestion(0);
+		$condition = $mytest -> getquestion(0);        ////         REPLACE!!!!!!!!!
 	else
 		$condition = $mytest -> getquestion($qid);
 
@@ -38,7 +39,7 @@ function showquestion()
 		switch ($condition[2]) 
 			{
 				case '1':
-					$vs = $condition[3];
+					$vs = $condition[3];    // various of answers
 					$n = count($vs);
 					shuffle($vs);
 					for ($i = 0; $i < $n; $i++)
@@ -80,7 +81,7 @@ function showquestion()
 	}
 
 
-if ($number == 0)
+if ($number == 0)   // if it's new test
  	{
  		unset($_SESSION['anws']);
  		$_SESSION['anws'] = array();
@@ -141,8 +142,8 @@ if (empty($condition[1]))
 		$mark = $mytest -> checkup();
 		$_SESSION['showmark'] = 1;
 		$_SESSION['mark'] = $mark;
-		$_SESSION['tid'] = $id;
-		header("Location: http://$host/user/index.php");
+		$_SESSION['tid'] = $mytest->tid;
+		header("Location: http://$host/views/user/index.php");
 	}
 ?>
 

@@ -1,22 +1,18 @@
 <?php
-require_once ('./processingtest.php');
+require_once('../../../private/Controllers/TestPassController.php');
+require_once('../header.php');
 ?>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Кабінет користувача</title>
-	<link rel="stylesheet" type="text/css" href="../share/share.css" />
-	<link rel="stylesheet" type="text/css" href="./user.css" />
-	<link rel="shortcut icon" href="../share/images/logo.png" type="image/x-icon">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title><?php  ?></title>
+    <link rel="stylesheet" type="text/css" href="../../styles/share.css" />
+    <link rel="stylesheet" type="text/css" href="../../styles/user.css" />
+    <link rel="shortcut icon" href="../../styles/share/logo.png" type="image/x-icon">
 
 </head>
 
 <body>
-
-<?php
-require_once ('../share/RightsValidation.php');
-userrights('user');
-?>
 
 <p id="user"><?php echo $q; ?></p>
 <form action="<?php echo $_SERVER['PHP_SELF']; $number++; echo "?n=$number&qid=$qid&id=$id"; ?>" method="POST">
@@ -35,7 +31,7 @@ userrights('user');
 		</div>
 	</div>
 </form>
-<div id="mend"><a href="index.php">На головну</a></p>
+<div id="mend"><a href="index.php">На головну</a></p></div>
 <div id="exit">
 	<a href="../share/logout.php"><img src="../share/images/exit.gif" style="width: 50px;" /></a>
 </div>

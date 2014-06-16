@@ -1,6 +1,5 @@
 <?php
-session_start();
-require_once("../../../private/Controllers/UserController.php");
+require_once('../../../private/Controllers/UserController.php');
 require_once('../header.php');
 ?>
 
@@ -54,7 +53,9 @@ require_once('../header.php');
 
 
 <div id="exit">
-	<a href="../share/logout.php"><img src="../../styles/share/exit.gif" style="width: 50px;" /></a>
+	<a href="../logout.php">
+        <img src="../../styles/share/exit.gif" style="width: 50px;" />
+    </a>
 </div>
 <p id="bottom"></p>
 </body>
