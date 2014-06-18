@@ -96,12 +96,23 @@ class CTest
 		return 0;
 	}
 
+    public function getQuestionsId()
+    {
+        $questions = array();
+        $tid = $this -> tid;
+        $query = "SELECT id FROM questions WHERE idtest = $tid ";
+        $result = $this -> mydb -> selectdata($query);
+        while($str = mysql_fetch_array($result, MYSQLI_NUM))
+            $questions[] = $str[0];
+        return $questions;
+    }
+
 	public function getquestion($qid)
 	{
 		$id = $this -> tid;
 		$cond = array();
 		$answ = array();
-		$query = "SELECT id, cond, qtype FROM questions WHERE idtest = $id AND id > $qid LIMIT 1";
+		$query = "SELECT id, cond, qtype FROM questions WHERE idtest = $id AND id = $qid LIMIT 1";
 		$result = $this -> mydb -> selectdata($query);
 		$str = mysql_fetch_array($result, MYSQLI_NUM);
 		$cond[0] = $str[0];

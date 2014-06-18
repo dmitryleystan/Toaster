@@ -15,22 +15,27 @@ $myuser->uid = $_SESSION['uid'];
 
 $mytest = new CTest();                  // Which of tests I want to pass
 $mytest->tid = $_GET['tid'];  // tid => test id
+$tid = $mytest->tid;
 
-
-$qid = $_GET['qid'];
+//$qid = $_GET['qid'];
 $number = $_GET['n'];
 if (empty($number))
+{
 	$number = 0;
+    $questionsId = $mytest -> getQuestionsId();  // reading all questions id's
+    shuffle($questionsId);
+    $_SESSION['qids'] = $questionsId;
+}
+else
+    $questionsId = $_SESSION['qids'];
 
-if (!empty($mytest->tid))
-	if (empty($qid))
-		$condition = $mytest -> getquestion(0);        ////         REPLACE!!!!!!!!!
-	else
-		$condition = $mytest -> getquestion($qid);
+
+$qid = $questionsId[$number];
+$condition = $mytest -> getquestion($qid);
 
 
-$lqid = $qid; /// Питання на яке ми відповіли
-$qid = $condition[0]; /// Наступне питання на яке треба дати відповідь
+$lqid = $qid; /// The question which we have already passed
+$qid = $condition[0]; /// Next question which we should pass
 $last = $qid;
 
 function showquestion()

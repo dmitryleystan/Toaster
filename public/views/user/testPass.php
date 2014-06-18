@@ -15,7 +15,7 @@ require_once('../header.php');
 <body>
 
 <p id="user"><?php echo $q; ?></p>
-<form action="<?php echo $_SERVER['PHP_SELF']; $number++; echo "?n=$number&qid=$qid&id=$id"; ?>" method="POST">
+<form action="<?php echo $_SERVER['PHP_SELF']; $number++; echo "?n=$number&tid=$tid"; ?>" method="POST">
 	<div id="content">
 		<p id="first">Питання №<?php echo $number;?></p>
 		<div id="center">
