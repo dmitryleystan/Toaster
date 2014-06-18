@@ -170,10 +170,9 @@ class CUser
 		AND groups.id = usandgr.idgroup AND usandgr.iduser = '$uid' GROUP BY tests.id";
 
 		$result = $this -> mydb -> selectdata($query);
-
         $res = array();
-		For ($i=0; $str = mysql_fetch_array($result, MYSQLI_NUM); $i++)
-			$res[$i] = $str;
+		While ($str = mysql_fetch_array($result, MYSQLI_NUM))
+			$res[] = $str;
 		return $res;
 	}
 

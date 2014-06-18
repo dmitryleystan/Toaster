@@ -31,7 +31,8 @@ else
 
 
 $qid = $questionsId[$number];
-$condition = $mytest -> getquestion($qid);
+if (!empty($qid))
+    $condition = $mytest -> getquestion($qid);
 
 
 $lqid = $qid; /// The question which we have already passed

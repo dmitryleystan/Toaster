@@ -27,7 +27,7 @@ if ($_SESSION['showmark'] == 1) //   if some test is done
 	if ($coefficient >= 0.86) $m = 5;
 	
 	$tid = $_SESSION['tid'];    // "tid" => "test id"
-//	$myuser -> setmark($m, $tid);
+	$myuser -> setmark($m, $tid);
 
     $rcount = $_SESSION['shmark']; // count of right answers
 
