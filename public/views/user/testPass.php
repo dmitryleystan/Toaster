@@ -5,7 +5,7 @@ require_once('../header.php');
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title><?php  ?></title>
+    <title><?php echo $tname; ?></title>
     <link rel="stylesheet" type="text/css" href="../../styles/share.css" />
     <link rel="stylesheet" type="text/css" href="../../styles/user.css" />
     <link rel="shortcut icon" href="../../styles/share/logo.png" type="image/x-icon">
@@ -14,13 +14,13 @@ require_once('../header.php');
 
 <body>
 
-<p id="user"><?php echo $q; ?></p>
-<form action="<?php echo $_SERVER['PHP_SELF']; $number++; echo "?n=$number&tid=$tid"; ?>" method="POST">
+<p id="user"><?php echo $uname; ?></p>
+<form action="<?php echo $_SERVER['PHP_SELF']."?n=$number&tid=$tid"; ?>" method="POST">
 	<div id="content">
 		<p id="first">Питання №<?php echo $number;?></p>
 		<div id="center">
 			<div id="question">
-			<p style="margin: 5px;"><?php echo $condition[1]; ?></p>
+			<p style="margin: 5px;"><?php echo $question_text; ?></p>
 			</div>
 			<?php
 				showquestion();
@@ -38,5 +38,4 @@ require_once('../header.php');
 
 <p id="bottom"></p>
 </body>
-<?php $myuser -> close(); ?>
 </html>

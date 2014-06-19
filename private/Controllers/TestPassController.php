@@ -9,15 +9,16 @@ require_once("{$base_dir}Classes/TestClass.php");
 require_once("{$base_dir}Modules/RightsValidation.php");
 userrights('user');
 
-$myuser = new CUser();                  // Who I am?
+$myuser = new CUser();                          // Who I am?
 $myuser->uname = $_SESSION['nick'];
 $myuser->uid = $_SESSION['uid'];
+$uname = $myuser->uname;
 
-$mytest = new CTest();                  // Which of tests I want to pass
-$mytest->tid = $_GET['tid'];  // tid => test id
+$mytest = new CTest();                          // Which of tests I want to pass
+$mytest->tid = $_GET['tid'];                    // tid => test id
 $tid = $mytest->tid;
+$tname = $mytest -> getname();
 
-//$qid = $_GET['qid'];
 $number = $_GET['n'];
 if (empty($number))
 {
@@ -35,9 +36,9 @@ if (!empty($qid))
     $condition = $mytest -> getquestion($qid);
 
 
-if ($number != 0) $lqid = $questionsId[$number-1]; /// The question which we have already passed
-$qid = $condition[0]; /// Next question which we should pass
-$last = $qid;
+if ($number != 0)
+    $lqid = $questionsId[$number-1];            // The question which we have already passed
+$qid = $condition[0];                           // Next question which we should pass
 
 function showquestion()
 	{
@@ -87,33 +88,33 @@ function showquestion()
 	}
 
 
-if ($number == 0)   // if it's new test
+if ($number == 0)                           // if it's new test
  	{
  		unset($_SESSION['anws']);
  		$_SESSION['anws'] = array();
  	}
 
-if (!empty($_POST['log']))
+if (!empty($_POST['log']))                  // if the last question was logical
 	{
 		$answ = $_POST['log'];
 		$answar = $_SESSION['anws'];
 		$el = array('log', $lqid, $answ - 1);
 		unset($_SESSION['anws']);
 		$answar[] = $el;
-		$_SESSION['anws'] = $answar;
+		$_SESSION['anws'] = $answar;        // write user answer
 	}
 
-if (!empty($_POST['sttt']))
+if (!empty($_POST['sttt']))                 // if the last question was standard
 	{
 		$answs = $_POST['stand'];
 		$answar = $_SESSION['anws'];
 		$el = array('stand', $lqid, $answs);
 		unset($_SESSION['anws']);
 		$answar[] = $el;
-		$_SESSION['anws'] = $answar;
+		$_SESSION['anws'] = $answar;        // write user answer
 	}
 
-if (!empty($_POST['com']))
+if (!empty($_POST['com']))                  // if the last question was complex
 	{
 		$ucl = array();
 		$ucr = array();
@@ -140,10 +141,10 @@ if (!empty($_POST['com']))
 		$el = array('comp', $lqid, $answ);
 		unset($_SESSION['anws']);
 		$answar[] = $el;
-		$_SESSION['anws'] = $answar;
+		$_SESSION['anws'] = $answar;       // write user answer
 	}
 
-if (empty($condition[1]))
+if (empty($condition[1]))                  // if there are no any questions
 	{
         $vs = $_SESSION['anws'];
 		$mark = $mytest -> checkup();
@@ -152,6 +153,9 @@ if (empty($condition[1]))
 		$_SESSION['tid'] = $mytest->tid;
 		header("Location: http://$host/views/user/index.php");
 	}
+
+$number++; // next question please!:)
+$question_text = $condition[1];
 ?>
 
 <script type="text/javascript">

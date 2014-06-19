@@ -7,6 +7,7 @@ require_once("{$base_dir}Classes{$ds}DataBaseClass.php");
 require_once("{$base_dir}Classes{$ds}UserClass.php");
 require_once("{$base_dir}Modules{$ds}ShowRCount.php");
 require_once ("{$base_dir}Modules{$ds}RightsValidation.php");
+
 userrights('user'); // validate user
                                                 ///         USER IDENTIFICATION
 $uname = $_SESSION['nick'];                     /// uname => username
