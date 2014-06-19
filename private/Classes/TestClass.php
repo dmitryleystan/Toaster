@@ -202,13 +202,13 @@ class CTest
 		$rum = 0;
 		$tar = $this -> gettar();
 
-		for ($i=0; $i < count($anws); $i++) 
+		for ($i=0; $i < count($anws); $i++)
 		{ 
 			$el = $anws[$i];
 			switch ($el[0]) 
 			{
 			case 'log':
-				// echo "LOG";
+//				 echo "LOG";
 				$query = "SELECT answer FROM answers2 WHERE qid = $el[1]";
 				$result = $this -> mydb -> selectdata($query);
 				$str = mysql_fetch_array($result, MYSQLI_NUM);
@@ -220,6 +220,7 @@ class CTest
 				break;
 
 			case 'stand':
+                echo "STAND";
 				$rsum = $this -> rofansw1($el[1]);
 				$ar = $el[2];
 				$vsum = 0; $cor = 1;
@@ -238,10 +239,11 @@ class CTest
 				// 
 				if (($tar[1]*($vsum/$rsum*$cor)) == 1) $sum += 1;
 				$rum = $rum + $tar[1];
-				// echo "STAN";
+				 echo "-DONE";
 				break;
 
 			case 'comp':
+                    echo "COMP";
 					$vsum = 0;
 					$k = $this -> rofansw3($el[1]);
 					$kl = $k[0];

@@ -33,7 +33,7 @@ require_once('../header.php');
 </form>
 <div id="mend"><a href="index.php">На головну</a></p></div>
 <div id="exit">
-	<a href="../share/logout.php"><img src="../share/images/exit.gif" style="width: 50px;" /></a>
+	<a href="../logout.php"><img src="../../styles/share/exit.gif" style="width: 50px;" /></a>
 </div>
 
 <p id="bottom"></p>

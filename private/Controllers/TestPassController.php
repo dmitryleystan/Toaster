@@ -35,7 +35,7 @@ if (!empty($qid))
     $condition = $mytest -> getquestion($qid);
 
 
-$lqid = $qid; /// The question which we have already passed
+if ($number != 0) $lqid = $questionsId[$number-1]; /// The question which we have already passed
 $qid = $condition[0]; /// Next question which we should pass
 $last = $qid;
 
@@ -145,6 +145,7 @@ if (!empty($_POST['com']))
 
 if (empty($condition[1]))
 	{
+        $vs = $_SESSION['anws'];
 		$mark = $mytest -> checkup();
 		$_SESSION['showmark'] = 1;
 		$_SESSION['mark'] = $mark;
