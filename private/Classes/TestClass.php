@@ -208,7 +208,6 @@ class CTest
 			switch ($el[0]) 
 			{
 			case 'log':
-//				 echo "LOG";
 				$query = "SELECT answer FROM answers2 WHERE qid = $el[1]";
 				$result = $this -> mydb -> selectdata($query);
 				$str = mysql_fetch_array($result, MYSQLI_NUM);
@@ -216,7 +215,6 @@ class CTest
 				if ($ransw == $el[2])
 					$sum = $sum + $tar[0];
 				$rum = $rum + $tar[0];
-				// echo "Q$el[1] R$ransw My$el[2] ! ";
 				break;
 
 			case 'stand':
@@ -236,7 +234,6 @@ class CTest
 					else
 						$cor=0;
 				}
-				// 
 				if (($tar[1]*($vsum/$rsum*$cor)) == 1) $sum += 1;
 				$rum = $rum + $tar[1];
 				 echo "-DONE";
@@ -268,15 +265,12 @@ class CTest
 							$cr = $ucr[0][0];
 							while (($clc !== $crc) && ($j < count($ucr)))
 								{ $j++; $cr=$ucr[$j][0]; $crc=$ucr[$j][1]; }
-							// echo "________________$clc $cl---- $crc $cr ";
 							if ($j<=$kl)
 								$vsum++;
 						}
 					}
-					// echo "_______________________________$vsum";
 					$sum = $sum + $tar[2]*($vsum / $rsum);
 					$rum = $rum + $tar[2];
-					// echo "COMP";
 				break;
 			}
 		}

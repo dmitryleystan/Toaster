@@ -13,9 +13,6 @@ require_once('../header.php');
 
 <body id="abody">
 
-<?php
-//require_once ('./ResultsController.php');             What a ... ?!?!
-//?>
 
 <p id="reg"><a href="./groups/groups.php">Групи & Користувачі</a></p>
 <p id="user"><?php echo $_SESSION['nick'] ?></p>
@@ -52,7 +49,15 @@ require_once('../header.php');
 				</table>
 				<input type="submit" class="button" value="Знайти.." name="fin" />
 			</form>
+            <div id= "find" <?php visibility(); ?> >
+                <table>
+                    <col width="150">
+                    <col width="70">
+                    <col width="80">
+                    <col width="70">
 			        <?php  searchtest(); ?>
+                </table>
+            </div>
         </div>
 		<div id="pleft">
 			<p class="myh">Створити тест</p>
