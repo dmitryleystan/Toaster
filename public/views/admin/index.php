@@ -1,20 +1,21 @@
 <?php
-require_once ('../share/header.php');
+require_once('../../../private/Controllers/AdminController.php');
+require_once('../header.php');
 ?>
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Кабінет адміністратора</title>
-	<link rel="stylesheet" type="text/css" href="../share/share.css" />
-	<link rel="stylesheet" type="text/css" href="./admin.css" />
-	<link rel="shortcut icon" href="../share/images/logo.png" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="../../styles/share.css" />
+	<link rel="stylesheet" type="text/css" href="../../styles/admin.css" />
+	<link rel="shortcut icon" href="../../styles/share/logo.png" type="image/x-icon">
 </head>
 
 <body id="abody">
 
 <?php
-require_once ('./processing.php');
-?>
+//require_once ('./ResultsController.php');             What a ... ?!?!
+//?>
 
 <p id="reg"><a href="./groups/groups.php">Групи & Користувачі</a></p>
 <p id="user"><?php echo $_SESSION['nick'] ?></p>
@@ -33,8 +34,7 @@ require_once ('./processing.php');
 							<select name="subject"  class="selectof" >
 								<option value=0 selected="selected">...</option>
 							<?php
-								for($q = 0; $q < count($name)+0; $q++)  
-    									echo '<option value="'. $id[$q] .'">'. $name[$q] .'</option>';     
+								show_sub_list();
 							?>
 							</select>
 						</td>
@@ -52,9 +52,8 @@ require_once ('./processing.php');
 				</table>
 				<input type="submit" class="button" value="Знайти.." name="fin" />
 			</form>
-
-			<?php searchtest(); ?>
-		</div>
+			        <?php  searchtest(); ?>
+        </div>
 		<div id="pleft">
 			<p class="myh">Створити тест</p>
 			<form action="../newtest/newtest.php" method="POST">
@@ -64,8 +63,7 @@ require_once ('./processing.php');
 							<select  id = "sub" name="subjectfortest" class="selectof" onChange="getid('sub');" style="margin-top: 20px; margin-bottom: 10px;">
 								<option value=0 selected="selected">...</option>
 								<?php
-									for($q = 0; $q < count($name)+0; $q++) 
-    										echo '<option value="'. $id[$q] .'">'. $name[$q] .'</option>';     
+									show_sub_list();
 								?>
 							</select>
 							<a onclick="return confirm('Ви впевнені?')" style="font-size: 0.6em;" id="delsub" href="" >Видал.</a>
@@ -79,22 +77,25 @@ require_once ('./processing.php');
 		<div id="pright">
 			<p class="myh">Остання активність</p>
 			<div id="lresults">
-			<?php
-				showlastresults();
-			?>
+                <table style = "font-size: 14px; text-align: center; left: -10px;">
+                    <col width="100">
+                    <col width="150">
+                    <col width="50">
+                    <col width="150">
+                    <col width="60">
+			        <?php
+                        show_l_results();
+			        ?>
+                </table>
 			</div>
 		</div>
 	</div>
 	<?php
-		if ($_GET['er'] == 1)
-			myerror('Ви не ввели найменування тесту або не вказали предмет..');
-		if ($_GET['ok'] == 1)
-			myerror('Виконано..');
+        showerrors();
 	?>
 	<div id="exit">
-		<a href="../share/logout.php"><img src="../share/images/exit.gif" style="width: 50px;" /></a>
+		<a href="../logout.php"><img src="../../styles/share/exit.gif" style="width: 50px;" /></a>
 	</div>
 	<p id="bottom"></p>
 </div>
-<?php $mydb -> close(); ?>
 </body>

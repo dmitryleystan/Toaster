@@ -36,7 +36,7 @@ if (isset($_POST['submit']))
 					{
 						$query = "INSERT INTO subjects (sname) VALUES ('$subname')";
 						$mydb -> insertdata($query);
-						header("Location: http://$host/admin/admin.php?ok=1");
+						header("Location: http://$host/admin/index.php?ok=1");
 					}
 				else
 					myerror(' такий предмет вже існує!');

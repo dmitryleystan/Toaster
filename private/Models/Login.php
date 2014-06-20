@@ -9,7 +9,7 @@ class CLogin
     public
 
         function __construct(){
-        $this->mydb = new CDataBase('ross','sunshine');
+            $this->mydb = new CDataBase('ross','sunshine');
         }
 
         function login($user, $password){

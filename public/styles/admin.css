@@ -29,7 +29,7 @@
 	border-width: 4px;
 	position: relative;
 	width: 420px;
-	float: center;
+	/*float: center;*/
 	height: 400px;
 }
 
@@ -53,7 +53,7 @@
 
 #bottom
 {
-	background : url('./images/bground.jpg') repeat-x;
+	background : url('./share/admin_footer.jpg') repeat-x;
 	height : 100px;
 	position: fixed;
 	bottom: -6px;
@@ -108,8 +108,8 @@ a:visited
 
 .instring /* повтор */
 	{
-		width: 160px;
-		height: 20px;
+		width: 170px;
+		height: 25px;
 		background-color: #fcf6f6;
 		border-style: solid;
 		padding-left: 5px;

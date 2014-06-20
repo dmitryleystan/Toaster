@@ -20,7 +20,7 @@ class CTest
 		$result = $this -> mydb -> selectdata($query);
 		while ($str = mysql_fetch_array($result, MYSQLI_NUM)) 
 			echo '<tr><td><input type="checkbox" name="grtodel[]"' . "value=$str[1] /></td>" 
-		. '<td><a href="../statistic/statist.php?shg=' . $str[1] . '&sht=' . $i .' ">' . $str[0] . "</a></td></tr>";
+		. '<td><a href="../statistic/results.php?shg=' . $str[1] . '&sht=' . $i .' ">' . $str[0] . "</a></td></tr>";
 		return 0;
 	}
 

@@ -10,7 +10,7 @@ include_once("{$base_dir}Modules{$ds}ErrorMessage.php");
 $error_code = 0;
 if (!empty($_SESSION['rights']))    // if I already entered in system
     if ($_SESSION['rights'] == 'admins')
-        header("Location: http://$host/views/admin/admin.php");
+        header("Location: http://$host/views/admin/index.php");
     else
         header("Location: http://$host/views/user/index.php");
 
@@ -28,7 +28,7 @@ if (isset($_POST['enter'])) // if I already want to enter in system
         $login_code = $model->login($user, $pass);
         switch ($login_code){
             case 2:
-                header("Location: http://$host/views/admin/admin.php?un=$user");
+                header("Location: http://$host/views/admin/index.php?un=$user");
                 break;
             case 1:
                 header("Location: http://$host/views/user/index.php?un=$user");

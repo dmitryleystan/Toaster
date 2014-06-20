@@ -1,4 +1,7 @@
-<?php require_once('./processing.php') ?>
+<?php
+require_once('../../../private/Controllers/BuildTestController.php');
+require_once('../header.php');
+?>
  
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -60,7 +63,7 @@
 			<input type="submit" name="next" class="button" value="Наступне"/>
 		</div>
 	</form>
-	<p id = "end"><a href="../admin/admin.php">Закінчити</a></p>
+	<p id = "end"><a href="index.php">Закінчити</a></p>
 	
 
 	<div id="exit">

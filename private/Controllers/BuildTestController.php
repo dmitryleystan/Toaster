@@ -11,7 +11,7 @@ if (empty($number))
 		if ( ($_POST['subjectfortest']==0) || (empty($_POST['theme'])) )
 			{
 				mysql_close($db);
-				header("Location: ../admin/admin.php?er=1");
+				header("Location: ../admin/index.php?er=1");
 			}
 		$number = 1;
 	}

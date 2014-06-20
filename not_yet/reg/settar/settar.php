@@ -22,7 +22,7 @@ if (isset($_POST['submit']))
 	{
 		$tar = array($_POST['cost1'], $_POST['cost2'], $_POST['cost3']);
 		$mytest -> settar($tar);
-		header("Location: http://$host/admin/admin.php?ok=1");
+		header("Location: http://$host/admin/index.php?ok=1");
 	}
 $tar = $mytest -> gettar();
 ?>

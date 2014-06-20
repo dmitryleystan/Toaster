@@ -13,7 +13,7 @@
 			{
 				$mytest -> tid = $_GET['clt'];
 				$mytest -> delresult($_GET['clg']);
-				header("Location: http://$host/admin/admin.php?ok=1");
+				header("Location: http://$host/admin/index.php?ok=1");
 			}
 
 	$mygroup -> gid = $_GET['shg'];
@@ -26,13 +26,7 @@
 			global $mygroup, $myuser, $mytest, $tid;
 			$arofus = $mygroup -> getusers();
 			$n = count($arofus);
-			echo '
-				<col width="150px">
-				<col width="160px">
-				<col width="100px">
-				<col width="150px">
-			';
-			echo "<tr><th>Логін</th><th>ПІБ</th><th>Оцінка</th><th>Дата та час</th></tr>";
+
 			for ($i=0; $i < $n; $i++) 
 				{ 
 					$mark = 0;
