@@ -1,5 +1,5 @@
 <?php
-require_once("{$base_dir}Classes/DataBaseClass.php");
+include_once("{$base_dir}Classes/DataBaseClass.php");
 
 class CTest
 {

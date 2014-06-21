@@ -1,5 +1,5 @@
 <?php
-require_once("DataBaseClass.php");
+include_once("DataBaseClass.php");
 
 class CUser
 {

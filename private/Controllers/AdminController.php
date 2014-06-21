@@ -27,7 +27,7 @@ function searchtest()   // show search test window
             $subject_name = $model->getTestSubject($test[1]);
             echo "<td>$subject_name</td>";
             echo '<td><a href=' . "./groups/groups.php?vg=" . $test[0] .'>групи</a></td>';
-            echo '<td style = "width: 40px;"><a href="./settar/settar.php?tid='. $test[0] .'">тар.</a>&nbsp;
+            echo '<td style = "width: 40px;"><a href="./settar/rates.php?tid='. $test[0] .'">тар.</a>&nbsp;
 						<a href="' . $_SERVER['PHP_SELF'] . '?dt='. $test[0] .'">вид.</a></td></tr>';
         }
 

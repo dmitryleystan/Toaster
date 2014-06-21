@@ -6,7 +6,10 @@ function userrights($right)
 		{
 			case 'admin':
 				if ($_SESSION['rights'] != 'admins')
+                {
+                    echo "hi";
 					header("Location: http://$host/index.php");
+                }
 				break;
 			case 'user':
 				if ($_SESSION['rights'] != 'users')

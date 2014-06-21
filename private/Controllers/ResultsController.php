@@ -3,7 +3,7 @@
 	require_once ('../../share/header.php');
 	require_once('../../share/DataBaseClass.php');
 	require_once('../../share/classtest.php');
-	require_once('../../share/classgroup.php');
+	require_once('../../share/GroupClass.php');
 	require_once('../../share/UserClass.php');
 	$mygroup = new group();
 	$mytest = new test();

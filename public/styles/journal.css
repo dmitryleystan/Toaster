@@ -9,7 +9,7 @@ body
 
 #book
 {
-	background: url('./book.gif') no-repeat;
+	background: url('./journal/book.gif') no-repeat;
 	height: 550px;
 	margin-top: 50px;
 }
@@ -63,7 +63,7 @@ body
 
 #bottom
 {
-	background : url('../images/bground.jpg') repeat-x;
+	background : url('./share/admin_footer.jpg') repeat-x;
 	height : 100px;
 	position: fixed;
 	bottom: -6px;
@@ -112,7 +112,7 @@ a:visited
 	
 .emptybtn
 	{
-		background-color: none;
+		/*background-color: none;*/
 		border-style: none;
 	}
 

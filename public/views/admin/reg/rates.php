@@ -1,31 +1,17 @@
-<?php require_once ('../../share/header.php'); ?>
+<?php
+require_once('../../../../private/Controllers/RegController.php');
+require_once('../../header.php');
+?>
+
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Вага відповідей</title>
-	<link rel="stylesheet" type="text/css" href="../../share/share.css" />
-	<link rel="stylesheet" type="text/css" href="../../index/index.css" />
-	<link rel="shortcut icon" href="../../share/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../../../styles/share.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/index.css" />
+    <link rel="shortcut icon" href="../../../styles/share/logo.png" type="image/x-icon">
 </head>
 
 <body>
-<?php
-// перевірка на вшивість юзера
-require_once ('../../share/RightsValidation.php');
-userrights('admin');
-// якщо юзер адмін то можна йти далі
-require_once('../../share/DataBaseClass.php');
-require_once('../../share/classtest.php');
-$mytest = new test();
-$tid = $_GET['tid'];
-$mytest -> tid = $_GET['tid'];
-if (isset($_POST['submit']))
-	{
-		$tar = array($_POST['cost1'], $_POST['cost2'], $_POST['cost3']);
-		$mytest -> settar($tar);
-		header("Location: http://$host/admin/index.php?ok=1");
-	}
-$tar = $mytest -> gettar();
-?>
 	<div id = "window">
 		<p id="hi" style="left: 70px; top: 20px;">Вага відповідей</p>
 		<!-- Обєкти вікна -->
@@ -49,7 +35,7 @@ $tar = $mytest -> gettar();
 						<tr><td><input type="text" class="instring" name="cost3" value="<?php echo $tar[2]; ?>"/></td></tr>
 						</tr>
 						<tr>
-							<td><input type="submit" name="submit" id="button" value="ок"/></td>
+							<td><input type="submit" name="ch_tar" id="button" value="ок"/></td>
 						</tr>
 					</table>
 					</form>

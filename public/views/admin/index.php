@@ -14,7 +14,7 @@ require_once('../header.php');
 <body id="abody">
 
 
-<p id="reg"><a href="./groups/groups.php">Групи & Користувачі</a></p>
+<p id="reg"><a href="./journal.php">Групи & Користувачі</a></p>
 <p id="user"><?php echo $_SESSION['nick'] ?></p>
 <div id="surface">
 	<p id="first">Ласкаво просимо</p>

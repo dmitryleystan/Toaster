@@ -6,9 +6,9 @@ require_once('../header.php');
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Адміністрування груп</title>
-	<link rel="stylesheet" type="text/css" href="../../share/share.css" />
-	<link rel="stylesheet" type="text/css" href="./group.css" />
-	<link rel="shortcut icon" href="../../share/images/logo.png" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="../../styles/share.css" />
+	<link rel="stylesheet" type="text/css" href="../../styles/journal.css" />
+	<link rel="shortcut icon" href="../../styles/share/logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -37,16 +37,12 @@ require_once('../header.php');
 	</form>
 	</div> <!-- кінець книжечки -->
 
-			<p id="bookmark1"><a href="<?php echo "http://$host"; ?>/reg/newgroup/reg.php">Додати групу</a></p>		<!-- закладка1 -->
-			<p id="bookmark2"><a href="<?php echo "http://$host"; ?>/reg/newuser/reg.php">Додати корист.</a></p>	<!-- закладка2 -->
+			<p id="bookmark1"><a href="./reg/group_new.php">Додати групу</a></p>		<!-- закладка1 -->
+			<p id="bookmark2"><a href="./reg/user_new.php">Додати корист.</a></p>	<!-- закладка2 -->
 			<p id="bookmark3"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">Форзац</a></p>							<!-- закладка3 -->
 	
 	<p class="mend"><a href="../admin.php">На головну</a></p>
 	<?php $mybook -> myerror(); ?>
 	<p id="bottom"></p>
 </body>
-<?php 
-$mybook -> close();
-$mygroup -> close();
-?>
 </html>

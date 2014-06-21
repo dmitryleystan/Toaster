@@ -1,21 +1,24 @@
 <?php
+session_start();
 
-//require_once ('../../share/RightsValidation.php');
-//userrights('admin');
-//require_once('../../share/DataBaseClass.php');
-//require_once('../../share/classtest.php');
-//require_once('../../share/UserClass.php');
-//require_once('../../share/classgroup.php');
-//require_once('../../share/classbook.php');
+$ds = DIRECTORY_SEPARATOR;
+$base_dir = realpath(dirname(__FILE__)  . $ds . '..') . $ds;
+require_once("{$base_dir}/Modules/HostName.php");
+require_once("{$base_dir}/Models/Admin.php");
+require_once("{$base_dir}/Modules/RightsValidation.php");
+userrights('admin');
+require_once("{$base_dir}Classes/JournalClass.php");
+require_once("{$base_dir}Classes/UserClass.php");
+require_once("{$base_dir}Classes/GroupClass.php");
+require_once("{$base_dir}Classes/TestClass.php");
 
-$mybook = new book();
-$mygroup = new group();
-$myuser = new user();
-$mytest = new test();
-$host = $_SERVER['HTTP_HOST'];
+$mybook = new CJournal();
+$mygroup = new CGroup();
+$myuser = new CUser();
+$mytest = new CTest();
 
-$l = $_POST['username'];
-$r = $_POST['groupname'];
+//$l = $_POST['username'];
+//$r = $_POST['groupname'];
 $users = $_POST['users'];
 $mgroup = $_POST['groups'];
 $do = $_GET['do'];

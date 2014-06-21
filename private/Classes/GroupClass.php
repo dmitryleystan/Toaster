@@ -1,5 +1,7 @@
 <?php
-	class group
+include_once("{$base_dir}Classes/DataBaseClass.php");
+
+	class CGroup
 	{
 		private $mydb;
 		public $gid;
@@ -7,7 +9,7 @@
 
 		public function __construct()
 			{
-				$this -> mydb = new database('ross','sunshine');
+				$this -> mydb = new CDataBase('ross','sunshine');
 			}
 
 		public function getusers()
@@ -59,4 +61,3 @@
 				return 0;
 			}
 	}
-?>

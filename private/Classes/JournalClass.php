@@ -1,12 +1,14 @@
 <?php
-	class book
+include_once("{$base_dir}Classes/DataBaseClass.php");
+
+	class CJournal
 		{
 			private $mydb;
 			private $errorst;
 
 			public function __construct()
 				{
-					$this -> mydb = new database('ross','sunshine');
+					$this -> mydb = new CDataBase('ross','sunshine');
 				}
 
 			public function myerror()
