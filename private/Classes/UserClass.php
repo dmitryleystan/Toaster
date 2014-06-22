@@ -59,7 +59,7 @@ class CUser
 		return 0;
 	}
 
-	public function usergroups()
+	public function getUserGroups()
 	{
 		if (!empty($this -> uname))
 		{

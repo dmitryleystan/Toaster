@@ -16,33 +16,33 @@ require_once('../header.php');
 
 	<form action= "<?php echo $_SERVER['PHP_SELF']; echo $lid; ?>" method="POST"> <!-- книжечка -->
 
-		<!-- ліва сторінка -->
+		<!-- left page -->
 		<div id="leftpage">
 			<?php
-				$mybook -> showleftpage($aboutl, $l);
+			    showleftpage($aboutl, $l);
 			?>
 		</div>
 
-		<!-- права сторінка -->
+		<!-- right page -->
 		<div id="rightpage">
 			<?php
-				$mybook -> showrightpage($aboutr, $r);
+				showrightpage($aboutr, $r);
 			?>
 		</div>
 
-			<?php
-				if (isset($_POST['delgroup']))
-						$mybook -> deletention();
-			?>
+
 	</form>
-	</div> <!-- кінець книжечки -->
+	</div> <!-- end of book -->
 
 			<p id="bookmark1"><a href="./reg/group_new.php">Додати групу</a></p>		<!-- закладка1 -->
 			<p id="bookmark2"><a href="./reg/user_new.php">Додати корист.</a></p>	<!-- закладка2 -->
 			<p id="bookmark3"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">Форзац</a></p>							<!-- закладка3 -->
 	
-	<p class="mend"><a href="../admin.php">На головну</a></p>
-	<?php $mybook -> myerror(); ?>
+	<p class="mend"><a href="./index.php">На головну</a></p>
+	<?php
+    if ($error_string != "")
+        myerror($error_string);
+    ?>
 	<p id="bottom"></p>
 </body>
 </html>

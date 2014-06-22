@@ -39,7 +39,7 @@ if ($_SESSION['showmark'] == 1) //   if some test is done
 
 $results = $myuser->getmarks();
 $tests = $myuser->gettests();
-$group_list = $myuser -> usergroups();
+$group_list = $myuser -> getUserGroups();
 $myuser -> close();
 
 function showmarks()
