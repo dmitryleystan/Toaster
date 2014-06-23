@@ -12,16 +12,17 @@ class CTest
 		$this -> mydb = new CDataBase('ross','sunshine');
 	}
 
-	public function showgroups()
+	public function getTestGroups()
 	{
+        $test_groups = array();
 		$i = $this -> tid;
 		$query = "SELECT name, id FROM groups INNER JOIN testandgr 
 		ON testandgr.idgroup = groups.id WHERE testandgr.idtest = '$i'";
 		$result = $this -> mydb -> selectdata($query);
-		while ($str = mysql_fetch_array($result, MYSQLI_NUM)) 
-			echo '<tr><td><input type="checkbox" name="grtodel[]"' . "value=$str[1] /></td>" 
-		. '<td><a href="../statistic/results.php?shg=' . $str[1] . '&sht=' . $i .' ">' . $str[0] . "</a></td></tr>";
-		return 0;
+		while ($str = mysql_fetch_array($result, MYSQLI_NUM))
+            $test_groups[] = $str;
+
+		return $test_groups;
 	}
 
 	public function reggroups($array, $ts)

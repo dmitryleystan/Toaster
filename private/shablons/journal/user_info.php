@@ -1,16 +1,16 @@
-<p class="head"><?php echo $user->uname; ?></p>
+<p class="head"><?php echo $user[1]; ?></p>
 
 <div id="info">
     <p>Прізвище:</p>
-    <p><input type="text" name="userfname" value="<?php echo $user->getinf('lname'); ?>" /></p>
+    <p><input type="text" name="userfname" value="<?php echo $user[3][0]; ?>" /></p>
     <p>Імя:</p>
-    <p><input type="text" name="userlname" value="<?php echo $user->getinf('fname'); ?>" /></p>
+    <p><input type="text" name="userlname" value="<?php echo $user[3][1]; ?>" /></p>
     <p>По-батькові:</p>
-    <p><input type="text" name="userfathname" value="<?php echo  $user->getinf('fathname') ?>" /></p>
+    <p><input type="text" name="userfathname" value="<?php echo  $user[3][2]; ?>" /></p>
     <p><a href="./reg/change_user_psw.php?uid=' . $us -> uid . '">Змінити пароль</a></p>
     <p>Групи до яких належить користувач:</p>
     <p>
-        <?php echo $usergroups; ?>
+        <?php echo $user[2]; ?>
     </p>
 </div>
 

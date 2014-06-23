@@ -37,11 +37,11 @@ include_once("{$base_dir}Classes/DataBaseClass.php");
 
 		public function getname()
 			{
-				$i = $this -> gid;
+				$i = $this->gid;
 				$query = "SELECT name FROM groups WHERE id = '$i'";
 				$result = $this -> mydb -> selectdata($query);
 				$str = mysql_fetch_array($result);
-				$this -> gname = $str[0];
+				$this->gname = $str[0];
 				return $str[0];
 			}
 
@@ -54,6 +54,17 @@ include_once("{$base_dir}Classes/DataBaseClass.php");
 				$this -> gid = $str[0];
 				return $str[0];
 			}
+
+        public function users_count()
+        {
+            $kil = 0;
+            $gid = $this->gid;
+            $query = "SELECT * FROM usandgr WHERE idgroup = $gid";
+            $result = $this -> mydb -> selectdata($query);
+            while($str = mysql_fetch_array($result, MYSQLI_NUM))
+                $kil++;
+            return $kil;
+        }
 
 		public function close()
 			{
