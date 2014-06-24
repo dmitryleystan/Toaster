@@ -29,70 +29,7 @@ $inf = $_GET['inf'];
 $groupname = $_POST['groupname'];                               // we want find some group?
 $username = $_POST['username'];
 
-if (isset($_POST['mreg']))	                                    // we want reg users in group?
-	if (!empty($mygroups))
-		$myuser->regusers($users, $mygroups);
-	else
-        $error_string = 'Ви не обрали групу..';
-
-if (isset($_POST['delus']))                                     // we want delete users?
-	$myuser -> delusers($users);
-
-if (isset($_POST['delgroup']))	                                // we want delete group?
-	{
-		$gid = $mygroups;                                       // gid - group id
-		$mygroup -> delgroup($gid);
-	}
-
-if (isset($_POST['viewgroup']))                                 // we want view group information?
-	if (!empty($mygroups))
-		{
-			$aboutl = 'showgroupstatist';
-			$aboutr = 'showusersbygroup';
-			$r = $mygroups;
-			$l = $mygroups;
-		}
-	else
-		$error_string = 'Ви не обрали групу..';
-
-if (!empty($inf))									            // we want see inf about user?
-	{
-		$aboutl = 'showuserinf';
-		$aboutr = 'showuserres';
-		$r = $inf;
-		$l = $inf;
-		$myuser->uid = $inf;
-		$lid = "?inf=" . $inf . "&ok=1";
-	}
-
-if (isset($_POST['saveusinf']))						            // we want update user inf?
-	{
-		$myuser -> uid = $_GET['inf'];
-		$fn = $_POST['userfname'];
-		$ln = $_POST['userlname'];
-		$fa = $_POST['userfathname'];
-		$myuser -> saveinf($fn,$ln,$fa);
-	}
-
-if (!empty($_GET['vg']))							            // we want see inf about test?
-	{
-		$aboutl = 'showtestinf';
-		$aboutr = 'showgroupsshare';
-		$l = $_GET['vg'];
-		$lid = "?vg=" . $l;
-	}
-
-if (isset($_POST['sharetest']))						            // we want share test?
-    $mytest->reggroups($mygroups, $_GET['vg']);
-
-if (isset($_POST['savetsinf']))						            // want del some group from test?
-		{
-			$mgroup = $_POST['grtodel'];
-			$mytest->delgroups($mgroup, $_GET['vg']);
-		}
-
-if ($_GET['ok'] == 1)									        // something go right :)
-	$error_string = "Виконано";
+require_once("{$base_dir}Modules/JournalUrlManager.php");       // include Url manager...
 
 function groups_list($gname)
 {
@@ -169,6 +106,16 @@ function group_test_list($tid, $group_list)
     echo '<tr><td><input type="checkbox" name="grtodel[]"' . "value=$group[1] /></td>"
         . '<td><a href="../statistic/results.php?shg=' . $group[1] . '&sht=' . $tid .' ">'
         . $group[0] . "</a></td></tr>";
+}
+
+function groups_list_to_share($gname)
+{
+    global $model;
+    $groups = $model->getGroups($gname);
+    foreach ($groups as $group)
+        echo "<tr><td>$group[1]</td><td>$group[2]</td>" .
+            '<td><input type="checkbox" name="groups[]"' .
+            "value=$group[0] /></td></tr>";
 }
 
 function showrightpage($about, $varibl)

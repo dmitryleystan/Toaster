@@ -6,7 +6,7 @@
         <col width="50">
         <tr><td>Ім'я групи.</td><td>К-сть учасн.</td><td>Відміт.</td></tr>
 
-        <?php groups_list() ?>
+        <?php groups_list_to_share() ?>
 
     </table>
 </div>

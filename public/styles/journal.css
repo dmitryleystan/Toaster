@@ -4,7 +4,11 @@ body
 	background-color: #ded0c3;
 	margin-left: auto;
 	margin-right: auto;
-	font-size: 12px;
+	font-size: 12px; !important;
+}
+table
+{
+    font-size: 12px; !important;
 }
 
 #book

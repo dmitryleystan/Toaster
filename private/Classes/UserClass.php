@@ -10,7 +10,7 @@ class CUser
 
 	public function __construct()
 	{
-		$this -> mydb = new CDataBase('ross','sunshine');
+		$this -> mydb = new CDataBase();
 	}
 
 	public function regusers($array, $gr)

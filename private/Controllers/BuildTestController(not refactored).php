@@ -17,7 +17,8 @@ if (empty($number))
 	}
 
 require_once('../share/DataBaseClass.php');
-$mydb = new database('ross','sunshine');
+$mydb = new database();
+
 if (isset($_POST['reg']))
 	{
 		if ($_POST['subjectfortest']!=0)

@@ -9,7 +9,7 @@ class Registration {
 
     function __construct()
     {
-        $this->mydb = new CDataBase('ross','sunshine');
+        $this->mydb = new CDataBase();
     }
 
     function create_user($uname, $passwd, $right)

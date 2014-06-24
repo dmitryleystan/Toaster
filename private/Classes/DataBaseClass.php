@@ -1,12 +1,15 @@
 <?php
+include_once("{$base_dir}config/app_config.php");
+
 class CDataBase
 {
 	private $db;
 
-	public function __construct($user,$password)
+	public function __construct()
 	{
-		$this->db = mysql_connect('localhost',$user,$password) or die('Error connect');
-		mysql_select_db('mybd', $this->db);
+        $config = Config::getConfig();
+		$this->db = mysql_connect('localhost', $config['username'], $config['password']) or die('Error connect');
+		mysql_select_db($config['dbname'], $this->db);
 		mysql_query("set names 'utf8'");
 	}
 

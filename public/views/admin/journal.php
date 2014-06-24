@@ -14,7 +14,7 @@ require_once('../header.php');
 <body>
 	<div id="book">
 
-	<form action= "<?php echo $_SERVER['PHP_SELF']; echo $lid; ?>" method="POST"> <!-- книжечка -->
+	<form action= "<?php echo $_SERVER['PHP_SELF']; echo $lid; ?>" method="POST"> <!-- book(journal) -->
 
 		<!-- left page -->
 		<div id="leftpage">
@@ -34,9 +34,9 @@ require_once('../header.php');
 	</form>
 	</div> <!-- end of book -->
 
-			<p id="bookmark1"><a href="./reg/group_new.php">Додати групу</a></p>		<!-- закладка1 -->
-			<p id="bookmark2"><a href="./reg/user_new.php">Додати корист.</a></p>	<!-- закладка2 -->
-			<p id="bookmark3"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">Форзац</a></p>							<!-- закладка3 -->
+			<p id="bookmark1"><a href="./reg/group_new.php">Додати групу</a></p>		            <!-- bookmark1 -->
+			<p id="bookmark2"><a href="./reg/user_new.php">Додати корист.</a></p>	                <!-- bookmark2 -->
+			<p id="bookmark3"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">Форзац</a></p>		    <!-- bookmark3 -->
 	
 	<p class="mend"><a href="./index.php">На головну</a></p>
 	<?php

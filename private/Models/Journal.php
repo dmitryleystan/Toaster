@@ -7,7 +7,7 @@ include_once("{$base_dir}Classes/DataBaseClass.php");
 
 			public function __construct()
 				{
-					$this -> mydb = new CDataBase('ross','sunshine');
+					$this -> mydb = new CDataBase();
 				}
 
 			public function getUsers($uname)

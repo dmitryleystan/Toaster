@@ -9,10 +9,10 @@ class CTest
 
 	public function __construct()
 	{
-		$this -> mydb = new CDataBase('ross','sunshine');
+		$this -> mydb = new CDataBase();
 	}
 
-	public function getTestGroups()
+	public function getTestGroups()                                             // which groups are passing this test?
 	{
         $test_groups = array();
 		$i = $this -> tid;
@@ -25,53 +25,49 @@ class CTest
 		return $test_groups;
 	}
 
-	public function reggroups($array, $ts)
+	public function reggroups($groups, $tid)                                     // add group to some test
 	{
-		$w = true;
-		$n = count($array);		// кількість нових груп для проходження				
-		if ($n != 0)	// якщо був обрана хоч одина група для додавання
+        $error = 0;
+		if (!empty($groups))	// it's group id?
 		{
-		for ($i = 0; $i < $n; $i++)
-		{
-			$query = "SELECT * FROM testandgr WHERE idgroup = '$array[$i]' AND idtest = '$ts'";
-			$result = $this -> mydb -> selectdata($query);
-			$str = mysql_fetch_array($result);
-			if ($str[0] == '') // якщо користувач вже не був зареєстрований у даній групі...
-			{
-				$query = "INSERT INTO testandgr (idgroup, idtest) VALUES('$array[$i]','$ts')";
-				$this -> mydb -> insertdata($query);
-			}
-			else
-				$w=false;
-		}
-		if ($w==true)
-			myerror('Виконано..');
-		else
-			myerror('Деякі групи вже були підписані на даний тест..');
+            foreach($groups as $group)
+            {
+			    $query = "SELECT * FROM testandgr WHERE idgroup = '$group' AND idtest = '$tid'";
+			    $result = $this->mydb->selectdata($query);
+			    $str = mysql_fetch_array($result);          // is group already is "test follower"
+			    if ($str[0] == '')                          // no...
+			    {
+				    $query = "INSERT INTO testandgr (idgroup, idtest) VALUES('$group','$tid')";
+				    $this->mydb->insertdata($query);
+			    }
+			    else
+				    $error = 1;
+            }
 		}
 		else
-			myerror('Ви не обрали жодну групу..');
-			return 0;
+			$error = 2;                                 // you didn't choice group
+
+		return $error;
 	}
 
-	public function delgroups($array, $ts)
+	public function delgroups($groups, $tid)                                      // want del groups from test?
 	{
-		$n = count($array);		// кількість груп для видалення				
-		if ($n != 0)	// якщо був обрана хоч одина група для видалення
+		$error = 0;
+		if (!empty($groups))	// якщо був обрана хоч одина група для видалення
 		{
-			for ($i = 0; $i < $n; $i++)
+			foreach($groups as $group)
 			{
-				$query = "DELETE FROM testandgr WHERE idgroup = '$array[$i]' AND idtest = '$ts'";
+				$query = "DELETE FROM testandgr WHERE idgroup = '$group' AND idtest = '$tid'";
 				$result = $this -> mydb -> deldata($query);
 			}
-			myerror('Виконано..');
 		}
 		else
-			myerror('Ви не обрали жодну групу..');
-			return 0;
+			$error = 2; // you didn't choice any group
+
+        return $error;
 	}
 
-	public function delquestion($idq)
+	public function delquestion($idq)                                           // delete test questions
 	{
 		$query = "DELETE FROM questions WHERE id = '$idq'";
 		$result = $this -> mydb -> deldata($query);
@@ -84,7 +80,7 @@ class CTest
 		return 0;
 	}
 
-	public function deltest()
+	public function deltest()                                                   // delete test
 	{
 		$i = $this -> tid;
 		$query = "DELETE FROM tests WHERE id = '$i'";
@@ -93,11 +89,10 @@ class CTest
 		$result = $this -> mydb -> selectdata($query);
 		while ($str = mysql_fetch_array($result, MYSQLI_NUM))
 			$this -> delquestion($str[0]);
-		myerror('Виконано..');
 		return 0;
 	}
 
-    public function getQuestionsId()
+    public function getQuestionsId()                                            // get test questions id's
     {
         $questions = array();
         $tid = $this -> tid;
@@ -108,7 +103,7 @@ class CTest
         return $questions;
     }
 
-	public function getquestion($qid)
+	public function getquestion($qid)                                           // get question of this test
 	{
 		$id = $this -> tid;
 		$cond = array();
@@ -151,7 +146,7 @@ class CTest
 		return $cond;
 	}
 
-	private function rofansw1($e)
+	private function rofansw1($e)                                               // range of answer type 1
 	{
 
 		$k = 0;
@@ -162,7 +157,7 @@ class CTest
 		return $k;
 	}
 
-	private function rofansw3($e)
+	private function rofansw3($e)                                               // range of answer type 3
 	{
 		$k = array();
 		$kr = 0; $kl = 0;
@@ -178,7 +173,7 @@ class CTest
 		return $k;				
 	}
 
-	public function gettar()
+	public function gettar()                                                    // get rates of questions types
 	{
 		$tar = array();
 		$tid = $this -> tid;
@@ -188,7 +183,7 @@ class CTest
 		return $tar;
 	}
 
-	public function settar($tar)
+	public function settar($tar)                                                // set rates of questions types
 	{
 		$tid = $this -> tid;
 		$query = "UPDATE tests SET cost1 = $tar[0], cost2 = $tar[1], cost3 = $tar[2] WHERE id = $tid";
@@ -196,7 +191,7 @@ class CTest
 		return 0;
 	}
 
-	public function checkup()
+	public function checkup()                                                   // verification of user test answers
 	{
 		$anws = $_SESSION['anws'];
 		$sum = 0;
@@ -279,7 +274,7 @@ class CTest
 		return $sum / $rum;
 	}
 
-	public function getresult($uid)
+	public function getresult($uid)                                             // get users results
 	{
 		$t = $this -> tid;
 		$query = "SELECT mark, sdata FROM tsession WHERE iduser = $uid AND idtest = $t";
@@ -292,7 +287,7 @@ class CTest
 		return $pkg;
 	}
 
-	public function delresult($gid)
+	public function delresult($gid)                                             // del group results
 	{
 		echo "Hi";
 		$t = $this -> tid;
@@ -308,7 +303,7 @@ class CTest
 		return 0;
 	}
 
-	public function getsub()
+	public function getsub()                                                    // get subject name of this test
 	{
 		$n = $this -> tid;
 		$query = "SELECT subjects.sname FROM subjects INNER JOIN tests ON tests.idsub = subjects.id WHERE tests.id = '$n'";
@@ -318,7 +313,7 @@ class CTest
 		return $str[0];
 	}
 
-	public function getname()
+	public function getname()                                                   // get test name
 	{
 		$n = $this -> tid;
 		$query = "SELECT name FROM tests WHERE id = '$n'";
