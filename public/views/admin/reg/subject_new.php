@@ -14,7 +14,7 @@ require_once('../../header.php');
 <body>
 	<div id = "window">
 		<p id="hi" style="left: 70px;">Новий предмет</p>
-		<!-- Обєкти вікна -->
+
 		<table id="table">
 			<tr>
 				<td id="top"></td>
@@ -43,7 +43,7 @@ require_once('../../header.php');
 				<td id="bottom"></td>
 			</tr>
 		</table>
-		<!-- /Обєкти вікна -->
+
 	</div>
 <?php
 if ($error_string != "")

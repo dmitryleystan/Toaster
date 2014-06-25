@@ -70,7 +70,7 @@ if (!empty($_GET['uid']))                                       // we want chang
             {
                 $myuser -> changepassw($_POST['passw']);
                 $host = $_SERVER['HTTP_HOST'];
-                header("Location: http://$host/admin/groups/groups.php?inf=" . $_GET['uid']); /// replace!!!!!!!!!!!!!!!
+                header("Location: http://$host/views/admin/journal?inf=" . $_GET['uid']); 
             }
             else
                 $error_string = ' Поля не збігаються!';

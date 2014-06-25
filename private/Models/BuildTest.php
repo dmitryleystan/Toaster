@@ -26,9 +26,7 @@ public
     {
         $query = "INSERT INTO tests (idsub, name) VALUES($sid, '$tname')";
         $this->mydb->insertdata($query);
-//        $query = "SELECT * FROM tests WHERE name LIKE '$tname'";
-//        $result = $this->mydb->selectdata($query);
-//        $str = mysql_fetch_array($result, MYSQLI_NUM);
+
         return mysql_insert_id();                                       // return test id
     }
 
@@ -37,9 +35,6 @@ public
         $query = "INSERT INTO questions (idtest, cond, qtype) VALUES ($tid, '$question', 2)";
         $this->mydb->insertdata($query);
 
-//        $query = "SELECT id FROM questions WHERE cond LIKE '$question'";
-//        $result = $this->mydb->selectdata($query);
-//        $str = mysql_fetch_array($result, MYSQLI_NUM);
         $idq = mysql_insert_id();
 
         $query = "INSERT INTO answers2 (qid,answer) VALUES($idq,'$answer')";
@@ -50,9 +45,7 @@ public
     {
         $query = "INSERT INTO questions (idtest, cond, qtype) VALUES ($tid, '$question', 1)";
         $this->mydb->insertdata($query);
-//        $query = "SELECT id FROM questions WHERE cond LIKE '$question'";
-//        $result = $this->mydb->selectdata($query);
-//        $str = mysql_fetch_array($result, MYSQLI_NUM);
+
         $idq = mysql_insert_id();                                   // last id -> id of question
 
         for ($i = 0; $i < count($answers); $i++)
@@ -69,10 +62,7 @@ public
     {
         $query = "INSERT INTO questions (idtest, cond, qtype) VALUES ($tid, '$question', 3)";
         $this->mydb->insertdata($query);
-//        $query = "SELECT * FROM questions WHERE id = (SELECT max(id) FROM questions)";
-//        $result = $this->mydb->selectdata($query);
-//        $str = mysql_fetch_array($result, MYSQLI_NUM);
-//        $idq = $str[0];
+
         $idq = mysql_insert_id();                                   // last id -> id of question
 
         foreach($answl as $answ)

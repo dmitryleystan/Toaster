@@ -67,6 +67,9 @@ else
 
 	}
 
+$number++;
+$adress = $_SERVER['PHP_SELF'] . "?number=$number&tid=$tid";
+
 ?>
 
 <script type="text/javascript">

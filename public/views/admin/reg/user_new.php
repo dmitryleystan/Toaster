@@ -15,7 +15,7 @@ require_once('../../header.php');
 
 	<div id = "window">
 		<p id="hi" style="left: 90px;">Реєстрація</p>
-		<!-- Обєкти вікна -->
+
 		<table id="table">
 			<tr>
 				<td id="top"></td>
@@ -49,7 +49,7 @@ require_once('../../header.php');
 				<td id="bottom"></td>
 			</tr>
 		</table>
-		<!-- /Обєкти вікна -->
+
 	</div>
 
 <?php

@@ -1,16 +1,17 @@
 <?php
-
 require_once ("{$base_dir}/Classes/DataBaseClass.php");
+
 class CAdmin {
 
 private
+
     $mydb;
 
 public
 
 function __construct()
 {
-    $this -> mydb = new CDataBase();
+    $this->mydb = new CDataBase();
 }
 
 function getSubjects()
@@ -77,8 +78,8 @@ function delSubject($sid)
     $result = $this->mydb -> selectdata($query);
     while ($str = mysqli_fetch_array($result, MYSQLI_NUM))
     {
-        $mytest -> tid = $str[0];
-        $mytest -> deltest();
+        $mytest->tid = $str[0];
+        $mytest->deltest();
     }
 }
 

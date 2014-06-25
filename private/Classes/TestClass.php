@@ -3,29 +3,33 @@ include_once("{$base_dir}Classes/DataBaseClass.php");
 
 class CTest
 {
-	private $mydb;
-	public $tid;
-	public $tname;
+	private
 
-	public function __construct()
+        $mydb;
+
+	public
+
+        $tid, $tname;
+
+	function __construct()
 	{
-		$this -> mydb = new CDataBase();
+		$this->mydb = new CDataBase();
 	}
 
-	public function getTestGroups()                                             // which groups are passing this test?
+	function getTestGroups()                                             // which groups are passing this test?
 	{
         $test_groups = array();
-		$i = $this -> tid;
+		$i = $this->tid;
 		$query = "SELECT name, id FROM groups INNER JOIN testandgr 
 		ON testandgr.idgroup = groups.id WHERE testandgr.idtest = '$i'";
-		$result = $this -> mydb -> selectdata($query);
+		$result = $this->mydb->selectdata($query);
 		while ($str = mysql_fetch_array($result, MYSQLI_NUM))
             $test_groups[] = $str;
 
 		return $test_groups;
 	}
 
-	public function reggroups($groups, $tid)                                     // add group to some test
+	function reggroups($groups, $tid)                                     // add group to some test
 	{
         $error = 0;
 		if (!empty($groups))	// it's group id?
@@ -50,7 +54,7 @@ class CTest
 		return $error;
 	}
 
-	public function delgroups($groups, $tid)                                      // want del groups from test?
+	function delgroups($groups, $tid)                                      // want del groups from test?
 	{
 		$error = 0;
 		if (!empty($groups))	// якщо був обрана хоч одина група для видалення
@@ -58,7 +62,7 @@ class CTest
 			foreach($groups as $group)
 			{
 				$query = "DELETE FROM testandgr WHERE idgroup = '$group' AND idtest = '$tid'";
-				$this->mydb ->deldata($query);
+				$this->mydb->deldata($query);
 			}
 		}
 		else
@@ -67,49 +71,49 @@ class CTest
         return $error;
 	}
 
-	public function delquestion($idq)                                           // delete test questions
+	function delquestion($idq)                                           // delete test questions
 	{
 		$query = "DELETE FROM questions WHERE id = '$idq'";
-		$result = $this -> mydb -> deldata($query);
+		$result = $this->mydb->deldata($query);
 		$query = "DELETE FROM answers1 WHERE qid = '$idq'";
-		$result = $this -> mydb -> deldata($query);
+		$result = $this->mydb->deldata($query);
 		$query = "DELETE FROM answers2 WHERE qid = '$idq'";
-		$result = $this -> mydb -> deldata($query);
+		$result = $this->mydb->deldata($query);
 		$query = "DELETE FROM answers3 WHERE qid = '$idq'";
-		$result = $this -> mydb -> deldata($query);
+		$result = $this->mydb->deldata($query);
 		return 0;
 	}
 
-	public function deltest()                                                   // delete test
+	function deltest()                                                   // delete test
 	{
-		$i = $this -> tid;
+		$i = $this->tid;
 		$query = "DELETE FROM tests WHERE id = '$i'";
-		$result = $this -> mydb -> deldata($query);
+		$result = $this ->mydb->deldata($query);
 		$query = "SELECT id FROM questions WHERE idtest = '$i'";
-		$result = $this -> mydb -> selectdata($query);
+		$result = $this->mydb->selectdata($query);
 		while ($str = mysql_fetch_array($result, MYSQLI_NUM))
 			$this -> delquestion($str[0]);
 		return 0;
 	}
 
-    public function getQuestionsId()                                            // get test questions id's
+    function getQuestionsId()                                            // get test questions id's
     {
         $questions = array();
-        $tid = $this -> tid;
+        $tid = $this->tid;
         $query = "SELECT id FROM questions WHERE idtest = $tid ";
-        $result = $this -> mydb -> selectdata($query);
+        $result = $this->mydb->selectdata($query);
         while($str = mysql_fetch_array($result, MYSQLI_NUM))
             $questions[] = $str[0];
         return $questions;
     }
 
-	public function getquestion($qid)                                           // get question of this test
+	function getquestion($qid)                                           // get question of this test
 	{
 		$id = $this -> tid;
 		$cond = array();
 		$answ = array();
 		$query = "SELECT id, cond, qtype FROM questions WHERE idtest = $id AND id = $qid LIMIT 1";
-		$result = $this -> mydb -> selectdata($query);
+		$result = $this->mydb->selectdata($query);
 		$str = mysql_fetch_array($result, MYSQLI_NUM);
 		$cond[0] = $str[0];
 		$cond[1] = $str[1];
@@ -119,7 +123,7 @@ class CTest
 			case 1:
 				$qid = $cond[0];
 				$query = "SELECT id, answer FROM answers1 WHERE qid = $qid";
-				$result = $this -> mydb -> selectdata($query);
+				$result = $this->mydb->selectdata($query);
 				while ($str = mysql_fetch_array($result, MYSQLI_NUM))
 					$answ[] = $str;
 				$cond[3] = $answ;
@@ -128,7 +132,7 @@ class CTest
 				$an = array();
 				$qid = $cond[0];
 				$query = "SELECT id, answer FROM answers3 WHERE qid = $qid AND side = 1";
-				$result = $this -> mydb -> selectdata($query);
+				$result = $this->mydb->selectdata($query);
 				while ($str = mysql_fetch_array($result, MYSQLI_NUM))
 					$an[] = $str;
 				$answ[0] = $an;
@@ -136,7 +140,7 @@ class CTest
 				$an = array();
 
 				$query = "SELECT id, answer FROM answers3 WHERE qid = $qid AND side = 0";
-				$result = $this -> mydb -> selectdata($query);
+				$result = $this->mydb->selectdata($query);
 				while ($str = mysql_fetch_array($result, MYSQLI_NUM))
 					$an[] = $str;
 				$answ[1] = $an;
@@ -146,23 +150,23 @@ class CTest
 		return $cond;
 	}
 
-	private function rofansw1($e)                                               // range of answer type 1
+	function rofansw1($e)                                               // range of answer type 1
 	{
 
 		$k = 0;
 		$query = "SELECT id FROM answers1 WHERE qid = $e AND mright = 1";
-		$result = $this -> mydb -> selectdata($query);
+		$result = $this->mydb->selectdata($query);
 		while ($str = mysql_fetch_array($result, MYSQLI_NUM))
 			$k++;
 		return $k;
 	}
 
-	private function rofansw3($e)                                               // range of answer type 3
+	function rofansw3($e)                                               // range of answer type 3
 	{
 		$k = array();
 		$kr = 0; $kl = 0;
 		$query = "SELECT side FROM answers3 WHERE qid = $e";
-		$result = $this -> mydb -> selectdata($query);
+		$result = $this->mydb->selectdata($query);
 		while ($str = mysql_fetch_array($result, MYSQLI_NUM))
 			if ($str[0] == 1)
 				$kl++;
@@ -173,25 +177,25 @@ class CTest
 		return $k;				
 	}
 
-	public function gettar()                                                    // get rates of questions types
+	function gettar()                                                    // get rates of questions types
 	{
 		$tar = array();
 		$tid = $this -> tid;
 		$query = "SELECT cost1, cost2, cost3 FROM tests WHERE id = $tid";
-		$result = $this -> mydb -> selectdata($query);
+		$result = $this->mydb->selectdata($query);
 		$tar = mysql_fetch_array($result, MYSQLI_NUM);
 		return $tar;
 	}
 
-	public function settar($tar)                                                // set rates of questions types
+	function settar($tar)                                                // set rates of questions types
 	{
-		$tid = $this -> tid;
+		$tid = $this->tid;
 		$query = "UPDATE tests SET cost1 = $tar[0], cost2 = $tar[1], cost3 = $tar[2] WHERE id = $tid";
-		$this -> mydb -> update($query);
+		$this->mydb->update($query);
 		return 0;
 	}
 
-	public function checkup()                                                   // verification of user test answers
+	function checkup()                                                   // verification of user test answers
 	{
 		$anws = $_SESSION['anws'];
 		$sum = 0;
@@ -205,7 +209,7 @@ class CTest
 			{
 			case 'log':
 				$query = "SELECT answer FROM answers2 WHERE qid = $el[1]";
-				$result = $this -> mydb -> selectdata($query);
+				$result = $this->mydb->selectdata($query);
 				$str = mysql_fetch_array($result, MYSQLI_NUM);
 				$ransw = $str[0];
 				if ($ransw == $el[2])
@@ -215,7 +219,7 @@ class CTest
 
 			case 'stand':
                 echo "STAND";
-				$rsum = $this -> rofansw1($el[1]);
+				$rsum = $this->rofansw1($el[1]);
 				$ar = $el[2];
 				$vsum = 0; $cor = 1;
 				for ($j=0; $j < count($ar); $j++) 
@@ -223,7 +227,7 @@ class CTest
 					$a = substr($ar[$j],3);
 
 					$query = "SELECT mright FROM answers1 WHERE id = $a";
-					$result = $this -> mydb -> selectdata($query);
+					$result = $this->mydb->selectdata($query);
 					$str = mysql_fetch_array($result, MYSQLI_NUM);
 					if ($str[0] == 1)
 						$vsum++;
@@ -238,13 +242,13 @@ class CTest
 			case 'comp':
                     echo "COMP";
 					$vsum = 0;
-					$k = $this -> rofansw3($el[1]);
+					$k = $this->rofansw3($el[1]);
 					$kl = $k[0];
 					$kr = $k[1];
 					if ($kl < $kr)
 						$rsum = $kl;
 					else
-						$rsum = $kr; ///кількість відношень які є пов'язаними
+						$rsum = $kr; /// count of relations
 					
 					$e = $el[2];
 					$ucl = $e[0];
@@ -274,11 +278,11 @@ class CTest
 		return $sum / $rum;
 	}
 
-	public function getresult($uid)                                             // get users results
+	function getresult($uid)                                             // get users results
 	{
-		$t = $this -> tid;
+		$t = $this->tid;
 		$query = "SELECT mark, sdata FROM tsession WHERE iduser = $uid AND idtest = $t";
-		$result = $this -> mydb -> selectdata($query);
+		$result = $this->mydb->selectdata($query);
 		$a = array();
 		while ($str = mysql_fetch_array($result))
 			{ $a[]=$str[0]; $d=$str[1]; }
@@ -287,34 +291,32 @@ class CTest
 		return $pkg;
 	}
 
-	public function delresult($gid)                                             // del group results
+	function delresult($gid)                                             // del group results
 	{
-		$t = $this -> tid;
-//		$arofus = array();
 		$query = "SELECT tsession.iduser FROM tsession INNER JOIN usandgr 
 		ON usandgr.iduser = tsession.iduser WHERE usandgr.idgroup = $gid";
 		$result = $this->mydb->selectdata($query);
 		while ($str = mysql_fetch_array($result))
 		{
 			$query = "DELETE FROM tsession WHERE iduser = $str[0]";
-			$this -> mydb -> deldata($query);
+			$this->mydb->deldata($query);
 		}
 		return 0;
 	}
 
-	public function getsub()                                                    // get subject name of this test
+	function getsub()                                                    // get subject name of this test
 	{
 		$n = $this->tid;
 		$query = "SELECT subjects.sname FROM subjects INNER JOIN tests ON tests.idsub = subjects.id WHERE tests.id = '$n'";
 		$result = $this->mydb->selectdata($query);
 		$str = mysql_fetch_array($result);
-		$this -> tname = $str[0];
+		$this->tname = $str[0];
 		return $str[0];
 	}
 
-	public function getname()                                                   // get test name
+	function getname()                                                   // get test name
 	{
-		$n = $this -> tid;
+		$n = $this->tid;
 		$query = "SELECT name FROM tests WHERE id = '$n'";
 		$result = $this->mydb->selectdata($query);
 		$str = mysql_fetch_array($result);
@@ -322,9 +324,9 @@ class CTest
 		return $str[0];
 	}
 
-	public function close()
+	function close()
 	{
-		$this -> mydb -> close();
+		$this->mydb->close();
 		return 0;
 	}
 }

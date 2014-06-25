@@ -5,7 +5,7 @@ require_once('../header.php');
  
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Питання № <?php echo $number; ?></title>
+	<title>Питання № <?php echo $number-1; ?></title>
 	<link rel="stylesheet" type="text/css" href="../../styles/build_test.css" />
 	<link rel="shortcut icon" href="../../styles/share/logo.png" type="image/x-icon">
 </head>
@@ -13,10 +13,10 @@ require_once('../header.php');
 <body>
 
 
-<p id="user"><?php echo $_SESSION['nick'] ?></p>
+<p id="user"><?php echo $_SESSION['nick']; ?></p>
 <div id="surface">
-	<p id="first">Питання № <?php echo $number; ?> </p>
-	<form action="<?php echo $_SERVER['PHP_SELF']; $number++; echo "?number=$number&sub=$name&tid=$tid&answ=$last"; ?>" method="POST">
+	<p id="first">Питання № <?php echo $number-1; ?> </p>
+	<form action="<?php echo $adress; ?>" method="POST">
 
 		<p><textarea style="width: 1000px; height: 80px; position: relative; left: -250px;" name="question"></textarea></p>
 		<div id="content">
@@ -65,7 +65,7 @@ require_once('../header.php');
 	
 
 	<div id="exit">
-		<a href="../share/logout.php"><img src="../share/images/exit.gif" style="width: 50px;" /></a>
+		<a href="../logout.php"><img src="../../styles/share/exit.gif" style="width: 50px;" /></a>
 	</div>
 	<p id="bottom"></p>
 </div>

@@ -1,5 +1,5 @@
 <?php
-function js_sh_rcount($mark, $key = true) //
+function js_sh_rcount($mark, $key = true) 
 {
     if ($key)
     echo '

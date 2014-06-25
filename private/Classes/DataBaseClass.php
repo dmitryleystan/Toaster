@@ -3,9 +3,13 @@ include_once("{$base_dir}config/app_config.php");
 
 class CDataBase
 {
-	private $db;
+	private
 
-	public function __construct()
+    $db;
+
+    public
+
+	function __construct()
 	{
         $config = Config::getConfig();
 		$this->db = mysql_connect('localhost', $config['username'], $config['password']) or die('Error connect');
@@ -13,31 +17,31 @@ class CDataBase
 		mysql_query("set names 'utf8'");
 	}
 
-	public function close()
+	function close()
 	{
 		mysql_close($this->db);
 		return 0;
 	}
 		
-	public function selectdata($query)
+	function selectdata($query)
 	{
 		$result = mysql_query($query, $this->db) or die('error_SELECT: ' . mysql_error());
 		return $result;
 	}
 
-	public function insertdata($query)
+	function insertdata($query)
 	{
 		mysql_query($query, $this->db) or die('error_INSERT: ' . mysql_error());
 		return 0;
 	}
 
-	public function deldata($query)
+	function deldata($query)
 	{
 		mysql_query($query, $this->db) or die('error_DELETE: ' . mysql_error());
 		return 0;	
 	}
 
-	public function update($query)
+	function update($query)
 	{
 		mysql_query($query, $this->db) or die('error_UPDATE: ' . mysql_error());
 		return 0;						

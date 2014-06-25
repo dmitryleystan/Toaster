@@ -4,15 +4,18 @@ require_once("{$base_dir}Classes{$ds}DataBaseClass.php"); // include DataBase Cl
 class CLogin
 {
     private
+
         $mydb;
 
     public
 
-        function __construct(){
+        function __construct()
+        {
             $this->mydb = new CDataBase();
         }
 
-        function login($user, $password){
+        function login($user, $password)
+        {
             $query = "SELECT * FROM users WHERE name = '$user'";
             $result = $this->mydb->selectdata($query);
             while ($str = mysql_fetch_array($result, MYSQLI_NUM))
