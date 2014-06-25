@@ -61,7 +61,7 @@ require_once('../header.php');
         </div>
 		<div id="pleft">
 			<p class="myh">Створити тест</p>
-			<form action="../newtest/newtest.php" method="POST">
+			<form action="./build_test.php" method="POST">
 				<table style="margin-bottom: 20px;">
 						<tr><td>Оберіть предмет: <a href="../reg/subject/reg.php" style="font-size: 0.6em;">(створ.)</a></td></tr>
 						<tr><td>
@@ -76,7 +76,7 @@ require_once('../header.php');
 						<tr><td>Введіть тему:</td></tr>
 						<tr><td><input type="text" class="instring" style="margin-top: 10px;" name="theme"/></td></tr>
 				</table>
-				<input type="submit" class="button" style="margin-left: 0px; margin-top: 5px;" name="create" value="Створити.."/>
+				<input type="submit" class="button" style="margin-left: 0px; margin-top: 5px;" name="create" value="Створити.." />
 			</form>
 		</div>
 		<div id="pright">

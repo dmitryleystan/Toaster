@@ -32,11 +32,11 @@ require_once('../../header.php');
 						<tr><td>пароль:</td></tr>
 						<tr><td><input type="password" class="instring" name="pass"/></td></tr>
 						</tr>
-						</tr>
-						<tr><td>
+						<tr>
+                            <td>
 							<input type="checkbox" name="rights" value="Yes"/><span>Адмін?</span>
-						</td></tr>
-						</tr>
+						    </td>
+                        </tr>
 						<tr>
 							<td><input type="submit" name="newuser" id="button" value="ок"/></td>
 						</tr>

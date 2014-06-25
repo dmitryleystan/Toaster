@@ -25,14 +25,13 @@ require_once('../../header.php');
 					<form action="<?php echo $_SERVER['PHP_SELF'] . '?tid=' . $tid; ?>" method="POST">
 					<table id="tablein">
 						<tr><td>логічне:</td></tr>
-						<tr><td><input type="text" class="instring" name="cost1" value="<?php echo $tar[0]; ?>"></td></tr>
+						<tr><td><input type="text" class="instring" name="cost1" value="<?php echo $tar[0]; ?>"></td>
 						</tr>
 						<tr><td>звичайне:</td></tr>
-						<tr><td><input type="text" class="instring" name="cost2" value="<?php echo $tar[1]; ?>"/></td></tr>
-						</tr>
+						<tr><td><input type="text" class="instring" name="cost2" value="<?php echo $tar[1]; ?>"/></td>
 						</tr>
 						<tr><td>на відповідність:</td></tr>
-						<tr><td><input type="text" class="instring" name="cost3" value="<?php echo $tar[2]; ?>"/></td></tr>
+						<tr><td><input type="text" class="instring" name="cost3" value="<?php echo $tar[2]; ?>"/></td>
 						</tr>
 						<tr>
 							<td><input type="submit" name="ch_tar" id="button" value="ок"/></td>

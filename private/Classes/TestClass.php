@@ -58,7 +58,7 @@ class CTest
 			foreach($groups as $group)
 			{
 				$query = "DELETE FROM testandgr WHERE idgroup = '$group' AND idtest = '$tid'";
-				$result = $this -> mydb -> deldata($query);
+				$this->mydb ->deldata($query);
 			}
 		}
 		else
@@ -289,12 +289,12 @@ class CTest
 
 	public function delresult($gid)                                             // del group results
 	{
-		echo "Hi";
+//		echo "Hi";
 		$t = $this -> tid;
-		$arofus = array();
+//		$arofus = array();
 		$query = "SELECT tsession.iduser FROM tsession INNER JOIN usandgr 
 		ON usandgr.iduser = tsession.iduser WHERE usandgr.idgroup = $gid";
-		$result = $this -> mydb -> selectdata($query);
+		$result = $this->mydb->selectdata($query);
 		while ($str = mysql_fetch_array($result))
 		{
 			$query = "DELETE FROM tsession WHERE iduser = $str[0]";
@@ -305,9 +305,9 @@ class CTest
 
 	public function getsub()                                                    // get subject name of this test
 	{
-		$n = $this -> tid;
+		$n = $this->tid;
 		$query = "SELECT subjects.sname FROM subjects INNER JOIN tests ON tests.idsub = subjects.id WHERE tests.id = '$n'";
-		$result = $this -> mydb -> selectdata($query);
+		$result = $this->mydb->selectdata($query);
 		$str = mysql_fetch_array($result);
 		$this -> tname = $str[0];
 		return $str[0];
@@ -317,9 +317,9 @@ class CTest
 	{
 		$n = $this -> tid;
 		$query = "SELECT name FROM tests WHERE id = '$n'";
-		$result = $this -> mydb -> selectdata($query);
+		$result = $this->mydb->selectdata($query);
 		$str = mysql_fetch_array($result);
-		$this -> tname = $str[0];
+		$this->tname = $str[0];
 		return $str[0];
 	}
 

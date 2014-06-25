@@ -1,15 +1,13 @@
 <?php
-require_once('../../../private/Controllers/BuildTestController(not refactored).php');
+require_once('../../../private/Controllers/BuildTestController.php');
 require_once('../header.php');
 ?>
  
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Питання № <?php echo $number; ?></title>
-	<link rel="stylesheet" type="text/css" href="./newtest.css" />
-	<link rel="shortcut icon" href="../share/images/logo.png" type="image/x-icon">
-
-	
+	<link rel="stylesheet" type="text/css" href="../../styles/build_test.css" />
+	<link rel="shortcut icon" href="../../styles/share/logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -18,7 +16,7 @@ require_once('../header.php');
 <p id="user"><?php echo $_SESSION['nick'] ?></p>
 <div id="surface">
 	<p id="first">Питання № <?php echo $number; ?> </p>
-	<form action="<?php echo $_SERVER['PHP_SELF']; $number++; echo "?number=$number&sub=$name&id=$id&answ=$last"; ?>" method="POST">
+	<form action="<?php echo $_SERVER['PHP_SELF']; $number++; echo "?number=$number&sub=$name&tid=$tid&answ=$last"; ?>" method="POST">
 
 		<p><textarea style="width: 1000px; height: 80px; position: relative; left: -250px;" name="question"></textarea></p>
 		<div id="content">
@@ -72,7 +70,5 @@ require_once('../header.php');
 	<p id="bottom"></p>
 </div>
 
-<?php
-mysql_close($db);
-?>
 </body>
+</html>

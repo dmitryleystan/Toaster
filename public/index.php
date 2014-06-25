@@ -21,14 +21,14 @@ require_once("./views/header.php");
 			<tr><td><br/></td></tr>
 			<tr><td>логін:</td></tr>
 			<tr>
-				<td><input type="text" class="instring" name="user" value="<?php echo $user; ?>" /></td></tr>
-			</tr>
+				<td><input type="text" class="instring" name="user" value="<?php echo $user; ?>" /></td>
+            </tr>
 			<tr><td>пароль:</td></tr>
 			<tr>
-				<td><input type="password" class="instring" name="pass"/></td></tr>
-			</tr>
+				<td><input type="password" class="instring" name="pass" /></td>
+            </tr>
 			<tr>
-				<td><input type="submit" name="enter" id="button" value="ок"/></td>
+				<td><input type="submit" name="enter" id="button" value="ок" /></td>
 			</tr>
 		</table>
 
