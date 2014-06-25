@@ -289,7 +289,6 @@ class CTest
 
 	public function delresult($gid)                                             // del group results
 	{
-//		echo "Hi";
 		$t = $this -> tid;
 //		$arofus = array();
 		$query = "SELECT tsession.iduser FROM tsession INNER JOIN usandgr 

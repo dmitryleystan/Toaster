@@ -1,4 +1,5 @@
 <?php
+session_start();
 $ds = DIRECTORY_SEPARATOR;
 $base_dir = realpath(dirname(__FILE__)  . $ds . '..') . $ds;
 
@@ -10,7 +11,7 @@ userrights('admin');
 
 $number = $_GET['number'];
 
-if (empty($number))
+if (empty($number))                                         // first enter page...
 {
 	if ( ($_POST['subjectfortest'] == 0) || (empty($_POST['theme'])) )
 		header("Location: ./index.php?er=1");
@@ -19,7 +20,7 @@ if (empty($number))
 
 $model = new CBuildTest();
 
-if (isset($_POST['create']))
+if (isset($_POST['create']))                               // we want create some test?
 {
     $sid = $_POST['subjectfortest'];    // sid => subject id
     $subname = $model->getSubName($sid);
@@ -27,7 +28,7 @@ if (isset($_POST['create']))
     $tid = $model->regNewTest($tname, $sid);
 }
 else
-	if ($number>1) 
+	if ($number>1)                                         // on the next question we need add to base previous
 	{
 		$tid = $_GET['tid'];
 		$ques = mysql_escape_string( trim($_POST['question']) );
