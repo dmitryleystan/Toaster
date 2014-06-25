@@ -23,7 +23,7 @@ body
 
 #bottom
 {
-	background : url('../images/bground.jpg') repeat-x;
+	background : url('./share/admin_footer.jpg') repeat-x;
 	height : 100px;
 	position: fixed;
 	bottom: 6px;

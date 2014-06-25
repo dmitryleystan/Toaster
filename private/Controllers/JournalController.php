@@ -104,7 +104,7 @@ function group_test_list($tid, $group_list)
 {
     foreach($group_list as $group)
     echo '<tr><td><input type="checkbox" name="grtodel[]"' . "value=$group[1] /></td>"
-        . '<td><a href="../statistic/results.php?shg=' . $group[1] . '&sht=' . $tid .' ">'
+        . '<td><a href="./results.php?shg=' . $group[1] . '&sht=' . $tid .' ">'
         . $group[0] . "</a></td></tr>";
 }
 
