@@ -4,10 +4,10 @@ class Config
     static public function getConfig()
     {
         return $config = array(
-            'dbname' => 'mybd',
-            'username' => 'ross',
-            'password' => 'sunshine',
-            'host' => '192.168.1.100',
+            'dbname' => 'toaster',
+            'username' => '<username>',
+            'password' => '<password>',
+            'host' => 'localhost',
         );
     }
 }

@@ -4,9 +4,9 @@ class Config
     static public function getConfig()
     {
         return $config = array(
-            'dbname' => 'mybd',
-            'username' => 'ross',
-            'password' => 'sunshine',
+            'dbname' => 'toaster',
+            'username' => '<username>',
+            'password' => '<password>',
             'host' => 'localhost',
         );
     }
